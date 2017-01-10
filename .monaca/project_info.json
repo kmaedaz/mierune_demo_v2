@@ -11,7 +11,7 @@
         "cordova-plugin-splashscreen@3.2.2",
         "cordova-custom-config@2.0.3"
     ],
-    "title-ja": "test",
+    "title-ja": "デモ",
     "title-en": "",
     "description-ja": "",
     "description-en": "",
@@ -19,5 +19,5 @@
     "platform": [
         "android"
     ],
-    "name": "generated-1483873883-585b8acc013eb04c4c01b334"
+    "name": "generated-1484007931-585b8acc013eb04c4c01b334"
 }
