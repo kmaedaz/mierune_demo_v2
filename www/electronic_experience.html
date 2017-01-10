@@ -1,0 +1,462 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <!-- シナリオ -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <!script src="components/loader.js"><!/script>
+    <script src="lib/onsenui/js/onsenui.min.js"></script>
+    
+    
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+
+
+    <script src="./js/underscore-min.js"></script>
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <script src="./js/backbone-min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/anime_btn.css">
+    <script src="js/btn.js"></script>
+    <script src="js/irkit.js"></script>
+
+	<script src="js/scenario.js"></script>
+
+
+
+<style>
+
+    #aircon_panel{
+	    position: relative;
+	    width:80%;
+    }
+
+	#aircon_base{
+        position: relative;
+	}
+
+    
+    
+    #aircon_up {
+        position: absolute;
+        top: 34px;
+        Left: 390px;
+    }
+    
+    #aircon_down {
+        position: absolute;
+        top: 104px;
+        Left: 390px;
+    }
+    #aircon_temp_txt {
+        position: absolute;
+        font-size: 1.8em;
+        font-weight: bold;
+        top: 64px;
+        Left: 124px;
+    }
+    
+
+	//TV
+	#tv_power_base{
+	    position: relative;
+	}
+
+	  #tv_power {
+    position: absolute;
+    top: 170px;
+    Left: 68px;
+	}
+
+	#tv_ch_base {
+	    position: relative;
+	}
+
+
+	 #tv_ch_up{
+        position: absolute;
+        top: 140px;
+        Left: 68px;
+        
+	}
+
+	 #tv_ch_down{
+        position: absolute;
+        top: 360px;
+        Left: 68px;
+	}
+
+	</style>
+
+
+  <script>
+    var opration_flag =  false; //操作されたかチェック
+
+    	function  opration_check(myNavigator) {
+			 if(!opration_flag){
+				console.log("index");
+				// 家電機器初期設定
+				myNavigator.resetToPage("exp_index.html");
+			 } else{
+				console.log("index");
+			 }
+			 opration_flag=false;
+		}
+
+    ons.ready(function() {
+		console.log("Onsen UI is ready!");
+		//
+		const OP_TIME = 1000; //操作画面への遷移
+		const NEXTPAGE_TIME = 3000; //操作画面への遷移
+		const DEFAULT_TEMPERATURE=26;// 初期温度
+    	const NO_OPRATIN_TIME = 30000; //何もしなければ操作画面への遷移
+
+        setBtnAnim();	
+		//var irkit= new IrKitParam();
+		// console.log(irkit);
+		//	照明ボタンをタップ1秒後に画面表示、対象家電が点滅
+		//	3秒後に操作画面
+		//setTimeout(	function (){
+		//		myNavigator.resetToPage("light_control.html");
+		//	} , NEXTPAGE_TIME);
+		/*
+			イベントハンドラー
+		*/
+    	// 一定期間操作がなければ　機器操作index
+    	
+		//setInterval("opration_check(myNavigator)",NO_OPRATIN_TIME); //
+    	//  すべて
+
+
+        $(document).on('click',function(e) {
+		 opration_flag=true;
+		});
+
+
+
+        /*
+		// begin 機器操作インデックス
+		*/
+		$(document).on('click','#scene_detail_heatstroke',function(e) {
+			setTimeout(	function (){
+                    scenario_exec("SCENARIO_HEATPROTECT");
+                    myNavigator.resetToPage("scene_detail_heatstroke.html");  //熱中症予防
+			} , OP_TIME);
+			console.log("scene_detail_heatstroke");
+		});
+
+
+		$(document).on('click','#scene_detail_crime',function(e) {
+			setTimeout(	function (){
+				myNavigator.resetToPage("scene_detail_crime.html");  //防犯
+                 scenario_exec("SCENARIO_CRIMEDEFEND");
+			} , OP_TIME);
+			console.log("scene_detail_heatstroke");
+		});
+
+		//起床
+		$(document).on('click','#scene_detail_wakeup',function(e) {
+			setTimeout(	function (){
+				myNavigator.resetToPage("scene_detail_wakup.html");  //起床
+                 scenario_exec("SCENARIO_WAKEUP");
+	
+			} , OP_TIME);
+			console.log("scene_detail_wakup");
+		});
+
+		//外出
+		$(document).on('click','#scene_detail_outing',function(e) {
+			setTimeout(	function (){
+				myNavigator.resetToPage("scene_detail_outing.html");  //外出
+                 scenario_exec("SCENARIO_OUTING");
+	
+			} , OP_TIME);
+			console.log("scene_detail_outing");
+		});
+
+
+		//帰宅
+		$(document).on('click','#scene_detail_return',function(e) {
+			setTimeout(	function (){
+				myNavigator.resetToPage("scene_detail_return.html");  //帰宅
+                 scenario_exec("SCENARIO_OUTING");
+			} , OP_TIME);
+			console.log("scene_detail_outing");
+		});
+
+
+
+		/*
+		// end 機器操作インデックス
+		*/
+
+
+
+		//シナリオインデクス
+		$(document).on('click','.exp_index',function(e) {
+			console.log("exp_index");
+			myNavigator.resetToPage("exp_index.html");
+		});
+
+
+    });
+
+  </script>
+
+</head>
+<body>
+  <!-- First navigation component: Navigator. This will remain always on top of the app. -->
+  <ons-navigator id="myNavigator" var="myNavigator" page="exp_index.html" >
+
+  <!--ons-navigator id="myNavigator" var="myNavigator" page="tv_control.html" -->
+
+
+  </ons-navigator>
+ <!-- 
+	 機器の操作インデクス 
+ -->
+  <ons-template id="exp_index.html">
+
+  <p></p>
+      <div class="center" id="toolbar-title">  <h1>シナリオ機能</h1></div>
+
+   <h2>体感したいシナリオをタップしてください。</h2>
+
+
+
+<section style="padding-left: 10%">
+
+
+	<ons-button modifier="quiet" id="scene_detail_heatstroke">
+	<img border="0" src="./images/index_scene_heatstroke.png"   width=80% alt="熱中症予防">
+	</ons-button>
+
+
+	<ons-button modifier="quiet" id="scene_detail_crime">
+	<img border="0" src="./images/index_scene_crime.png"  width=80% alt="防犯">
+	</ons-button>
+
+	<ons-button modifier="quiet" id="scene_detail_wakeup">
+	<img border="0" src="./images/index_scene_wakeup.png"  width=80% alt="起床">
+	</ons-button>
+
+
+	<ons-button modifier="quiet" id="scene_detail_outing">
+	<img border="0" src="./images/index_scene_outing.png"  width=80% alt="外出">
+	</ons-button>
+	    
+
+	<ons-button modifier="quiet" id="scene_detail_return">
+	<img border="0" src="./images/index_scene_return.png"  width=80% alt="帰宅">
+	</ons-button>
+
+
+</section>
+
+<ons-button modifier="quiet" >
+    <a href="./index.html" >
+  <img border="0" src="./images/m_button_topback.png" class="btn_tap_anim"  width=80% alt="トップに戻る">
+    </a>
+    
+</ons-button>
+
+
+	    
+</ons-template>
+
+
+
+ <!-- 
+　熱中症予防
+	 映像終了後（映像は静止状態）に温度計がアップ、その3秒後にエアコンがON、３秒後にカーテンが閉まる。
+	３０秒間操作がない場合、初期設定され、シナリオTOPに戻る。
+	 -->
+  <ons-template id="scene_detail_heatstroke.html">
+			<p></p>
+			  <div class="center" id="toolbar-title">  <h1>熱中症予防シナリオ</h1></div>
+    <section style="padding-left: 0px; text-align: center;">
+                <div class="scene_view" >
+                    <video src="./movie/heatstroke_161227.mp4" autoplay  preload="none" class="movie_field" width="90%"> </video>
+                    <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
+                    <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
+                	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
+                	<img src="./images/scenario-cur.png" class="scene_frame blink_anime small_view scenario-cur" >
+                    <img src="./images/scenario-kasitu.png" class="scene_frame blink_anime small_view scenario-kasitu" >
+                    <img src="./images/scenario-shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
+                    <img src="./images/scenario-tv.png"  class="scene_frame blink_anime small_view scenario-tv" >
+                    <img src="./images/scenario-kyuji.png" class="scene_frame blink_anime small_view scenario-kyuji" >
+                </div>
+
+			<div class="eq_desc">
+    			<p>室内温度が２８℃を超えるとエアコンが動き出し、
+    			カーテンが閉まります。
+    			</p>
+    			<div class="scene_top_button">
+    				<ons-button modifier="quiet"  class="exp_index">
+    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim"  width=60% alt="機器の操作に戻る">
+    				</ons-button>
+    			</div>
+
+			</div>
+	</section>
+  </ons-template>
+
+
+
+ <!-- 
+　　　防犯シナリオ
+	映像終了後（映像は静止状態）に演出照明がOFF、５秒後にカーテンが閉まり、
+	
+	 -->
+  <ons-template id="scene_detail_crime.html">
+			<p></p>
+			  <div class="center" id="toolbar-title">  <h1>防犯シナリオ</h1></div>
+    <section style="padding-left: 0px; text-align: center;">
+            <div class="scene_view" >
+                <video src="./movie/crime_161227.mp4" autoplay preload="none" class="movie_field" width="90%"> </video>
+                <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
+    	         <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
+            	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
+            	<img src="./images/scenario-cur.png" class="scene_frame blink_anime small_view scenario-cur" >
+                <img src="./images/scenario-kasitu.png" class="scene_frame blink_anime small_view scenario-kasitu" >
+                <img src="./images/scenario-shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
+                <img src="./images/scenario-tv.png"  class="scene_frame blink_anime small_view scenario-tv" >
+                <img src="./images/scenario-kyuji.png" class="scene_frame blink_anime small_view scenario-kyuji" >
+			</div>
+
+			<div class="eq_desc">
+			<p>夕方になり室内が暗くなったら、カーテンが閉まり、
+				照明が点灯します。
+			</p>
+        		<div class="scene_top_button">
+    				<ons-button modifier="quiet"  class="exp_index">
+    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim"  width=60% alt="機器の操作に戻る">
+    				</ons-button>
+    			</div>
+			</div>>
+
+	</section>
+  </ons-template>
+
+
+
+ <!-- 
+	起床	
+	朝起きると、オーディオがオンになり、
+	カーテンが開きます。
+	映像終了後（映像は静止状態）に演出照明がOFF、５秒後にカーテンが閉まり、
+	 -->
+  <ons-template id="scene_detail_wakup.html">
+			<p></p>
+			  <div class="center" id="toolbar-title">  <h1>起床シナリオ</h1></div>
+    <section style="padding-left: 0px; text-align: center;">
+            <div class="scene_view" >
+                <video src="./movie/wakeup_161227.mp4" autoplay class="movie_field" width="90%"> </video>
+                <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
+                <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
+            	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
+            	<img src="./images/scenario-cur.png" class="scene_frame blink_anime small_view scenario-cur" >
+                <img src="./images/scenario-kasitu.png" class="scene_frame blink_anime small_view scenario-kasitu" >
+                <img src="./images/scenario-shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
+                <img src="./images/scenario-tv.png"  class="scene_frame blink_anime small_view scenario-tv" >
+                <img src="./images/scenario-kyuji.png" class="scene_frame blink_anime small_view scenario-kyuji" >
+			</div>
+
+			<div class="eq_desc">
+			<p>	朝起きると、オーディオがオンになり、
+				カーテンが開きます。
+
+			</p>
+        	<div class="scene_top_button">
+				<ons-button modifier="quiet"  class="exp_index">
+				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim"  width=60% alt="機器の操作に戻る">
+				</ons-button>
+			</div>
+
+			</div>
+
+	</section>
+  </ons-template>
+
+
+   <!-- 
+	外出
+	朝起きると、オーディオがオンになり、
+	カーテンが開きます。
+	映像終了後（映像は静止状態）に演出照明がOFF、５秒後にカーテンが閉まり、
+	 -->
+  <ons-template id="scene_detail_outing.html">
+			<p></p>
+			  <div class="center" id="toolbar-title">  <h1>外出シナリオ</h1></div>
+        <section style="padding-left: 0px; text-align: center;">
+            <div class="scene_view" >
+                <video src="./movie/goout_161227.mp4" autoplay class="movie_field" width="90%"> </video>
+                <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
+                <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
+            	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
+            	<img src="./images/scenario-cur.png" class="scene_frame blink_anime small_view scenario-cur" >
+                <img src="./images/scenario-kasitu.png" class="scene_frame blink_anime small_view scenario-kasitu" >
+                <img src="./images/scenario-shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
+                <img src="./images/scenario-tv.png"  class="scene_frame blink_anime small_view scenario-tv" >
+                <img src="./images/scenario-kyuji.png" class="scene_frame blink_anime small_view scenario-kyuji" >
+			</div>
+
+			<div class="eq_desc">
+			<p>	外出の時、玄関を出て家を離れると、
+				照明とエアコンのスイッチがオフになります。
+
+			</p>
+        	<div class="scene_top_button">
+				<ons-button modifier="quiet"  class="exp_index">
+				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim"  width=60% alt="機器の操作に戻る">
+				</ons-button>
+			</div>
+
+			</div>
+	</section>
+  </ons-template>
+
+
+
+
+   <!-- 
+	帰宅
+	朝起きると、オーディオがオンになり、
+	カーテンが開きます。
+	映像終了後（映像は静止状態）に演出照明がOFF、５秒後にカーテンが閉まり、
+	 -->
+  <ons-template id="scene_detail_return.html">
+			<p></p>
+			  <div class="center" id="toolbar-title">  <h1>帰宅シナリオ</h1></div>
+        <section style="padding-left: 0px; text-align: center;">
+            <div class="scene_view" >
+                <video src="./movie/returnhome_161227.mp4" autoplay class="movie_field" width="90%"  > </video>
+                <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
+                <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
+            	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
+            	<img src="./images/scenario-cur.png" class="scene_frame blink_anime small_view scenario-cur" >
+                <img src="./images/scenario-kasitu.png" class="scene_frame blink_anime small_view scenario-kasitu" >
+                <img src="./images/scenario-shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
+                <img src="./images/scenario-tv.png"  class="scene_frame blink_anime small_view scenario-tv" >
+                <img src="./images/scenario-kyuji.png" class="scene_frame blink_anime small_view scenario-kyuji" >
+			</div>
+
+			<div class="eq_desc">
+			<p>				帰宅する前に外からの遠隔操作で、
+				エアコンと照明をオンにし、給湯を行います。
+
+			</p>
+        	<div class="scene_top_button">
+				<ons-button modifier="quiet"  class="exp_index">
+				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim"  width=60% alt="機器の操作に戻る">
+				</ons-button>
+			</div>
+
+			</div>
+
+	</section>
+  </ons-template>
+</body>
+</html>

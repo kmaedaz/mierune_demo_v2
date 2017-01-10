@@ -1,0 +1,945 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <!-- 機器の操作 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <script src="lib/onsenui/js/onsenui.min.js"></script>
+
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+
+    <script src="./js/underscore-min.js"></script>
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <script src="./js/backbone-min.js"></script>
+
+    <link rel="stylesheet" href="css/anime_btn.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/btn.js"></script>
+
+    <script src="js/irkit.js"></script>
+    <title>機器の操作</title>
+
+    <style>
+    /*  エアコン */
+    #aircon_panel{
+        position: relative;
+	    width:80%;
+    }
+
+	#aircon_base{
+        position: relative;
+	}
+
+        
+        
+    #aircon_up {
+        position: absolute;
+        top: 78px;
+        Left: 860px;
+    }
+    
+    #aircon_down {
+        position: absolute;
+        top: 248px;
+        Left: 860px;
+    }
+    
+    #aircon_temp_txt {
+        position: absolute;
+        font-size: 3.4em;
+        font-weight: bold;
+        top: 148px;
+        Left: 291px;
+    }
+
+
+
+	/*  テレビ */
+	#tv_power_base{
+	    position: relative;
+	}
+
+    #tv_power {
+        position: absolute;
+        top: 84px;
+        Left: -10px;
+    }
+    
+    #tv_ch_base {
+        position: relative;
+    }
+    
+    
+    #tv_ch_up {
+        position: absolute;
+        top: 86px;
+        Left: -10px;
+    }
+    
+    #tv_ch_down {
+        position: absolute;
+        top: 224px;
+        Left: -10px;
+    }
+    
+	</style>
+
+  <script>
+		var opration_flag =  false; //操作されたかチェック
+
+		function  opration_check(myNavigator) {
+			 if(!opration_flag){
+				console.log("index");
+				// 家電機器初期設定
+				myNavigator.resetToPage("op_index.html");
+			 } else{
+				console.log("index");
+			 }
+			 opration_flag=false;
+		}
+
+
+    ons.ready(function() {
+		console.log("Onsen UI is ready!");
+  		//
+		const OP_TIME = 1000; //操作画面への遷移
+		const NEXTPAGE_TIME = 3400; //操作画面への遷移
+		const DEFAULT_TEMPERATURE=26;// エアコン初期温度
+		const NO_OPRATIN_TIME = 30000; //何もしなければ操作画面への遷移
+
+		var temperature_value = DEFAULT_TEMPERATURE; //既定値
+		var aircon_temp_txt1 = $("#aircon_temp_txt"); //エアコン温度表示
+		
+		// 一定期間操作がなければ　機器操作index
+    	
+		//setInterval("opration_check(myNavigator)",NO_OPRATIN_TIME); //
+
+
+		 // clearInterval(opration_check);
+
+		setBtnAnim();	
+		//var irkit= new IrKitParam();
+		// console.log(irkit);
+
+		/*
+			イベントハンドラー
+		*/
+		//  すべて
+		$(document).on('click',function(e) {
+		 opration_flag=true;
+		});
+
+
+		/*
+		// begin 機器操作インデックス　画面遷移
+		*/
+		$(document).on('click','#light_op',function(e) {
+			setTimeout(	function (){
+				myNavigator.resetToPage("light_explanation.html",{ animation: "lift" });
+					//setTimeout(	function (){
+					//myNavigator.resetToPage("light_control.html");
+					//} , NEXTPAGE_TIME);
+			} , OP_TIME);
+
+			console.log("light_op");
+		});
+
+		$(document).on('click','#aircon_op',function(e) {
+			console.log("aircon_op");
+			setTimeout(	function (){
+				myNavigator.resetToPage("aircon_explanation.html",{ animation: "lift" });
+					setTimeout(	function (){
+					myNavigator.resetToPage("aircon_control.html");
+					} , NEXTPAGE_TIME);
+			} , OP_TIME);
+		});
+
+		$(document).on('click','#tv_op',function(e) {
+			setTimeout(	function (){
+				myNavigator.resetToPage("tv_explanation.html",{ animation: "lift" });
+					setTimeout(	function (){
+					myNavigator.resetToPage("tv_control.html");
+					} , NEXTPAGE_TIME);
+			} , OP_TIME);
+
+			console.log("aircon_op");
+		});
+
+		$(document).on('click','#audio_op',function(e) {
+			console.log("audio_op");
+			setTimeout(	function (){
+				myNavigator.resetToPage("audio_explanation.html",{ animation: "lift" });
+					setTimeout(	function (){
+					myNavigator.resetToPage("audio_control.html");
+					} , NEXTPAGE_TIME);
+			} , OP_TIME);
+		});
+
+
+
+		//加湿空気清浄機
+		$(document).on('click','#purifier_op',function(e) {
+			console.log("purifier_op");
+			setTimeout(	function (){
+				myNavigator.resetToPage("purifier_explanation.html",{ animation: "lift" });
+					setTimeout(	function (){
+					myNavigator.resetToPage("purifier_control.html");
+					} , NEXTPAGE_TIME);
+			} , OP_TIME);
+
+		});
+
+		$(document).on('click','#curtain_op',function(e) {
+		  // カーテン
+			console.log("purifier_op");
+			setTimeout(	function (){
+				myNavigator.resetToPage("curtain_explanation.html",{ animation: "lift" });
+					setTimeout(	function (){
+					myNavigator.resetToPage("curtain_control.html");
+					} , NEXTPAGE_TIME);
+			} , OP_TIME);
+
+		});
+
+		$(document).on('click','#petfeeter_op',function(e) {
+			console.log("aircon_op");
+			setTimeout(	function (){
+				myNavigator.resetToPage("petffood_explanation.html",{ animation: "lift" });
+					setTimeout(	function (){
+					myNavigator.resetToPage("petffood_control.html");
+					} , NEXTPAGE_TIME);
+			} , OP_TIME);
+
+		});
+
+		/*
+		// end 機器操作インデックス
+		*/
+
+		/*------------------------------
+		　家電操作
+		--------------------------------*/
+		/*
+		 照明操作
+		*/
+		//イベントハンドら
+		$(document).on('click','#light_all_off',function(e) {
+			sendIRkit_command("LIGHT_OFF");
+//			sendIRkit_command("TEST");
+
+			console.log("light_all_off");
+		});
+
+		//イベントハンドら
+		$(document).on('click','#light_all_on',function(e) {
+			sendIRkit_command("LIGHT_ON");
+			console.log("ここにlight_all_onを書きますlight_all_of111111111111111111f");
+		});
+
+		//イベント
+		$(document).on('click','#light_bright',function(e) {
+			sendIRkit_command("LAMP_UP");
+			console.log("light_bright");
+		});
+
+		//イベント
+		$(document).on('click','#light_reduce',function(e) {
+			sendIRkit_command("LAMP_DOWN");
+			console.log("light_bright");
+		});
+
+		//イベント
+		$(document).on('click','#light_night',function(e) {
+			sendIRkit_command("LAMP_ON");
+			console.log("light_night");
+		});
+
+		//イベント
+		$(document).on('click','#light_dark',function(e) {
+			sendIRkit_command("");
+			console.log("light_dark");
+		});
+
+		/*
+		 エアコン
+		*/
+
+		//エアコンON
+		$(document).on('click','#aricon_on',function(e) {
+			sendIRkit_command("AIRCON_ON");
+			console.log("aricon_on");
+		});
+
+		//エアコンOFF
+		$(document).on('click','#aricon_off',function(e) {
+			sendIRkit_command("AIRCON_ON");
+			console.log("aricon_off");
+		});
+
+		//エアコン温度UP
+		$(document).on('click','#aircon_up',function(e) {
+			if(temperature_value<30){
+				sendIRkit_command("AIRCON_UP");
+				temperature_value++;
+				aircon_temp_txt.innerHTML = temperature_value + "℃"; 
+
+			}
+			console.log("aircon_up");
+
+		});
+
+		//エアコン_down
+		$(document).on('click','#aircon_down',function(e) {
+			if(temperature_value>18){
+				sendIRkit_command("AIRCON_DOWN");
+				temperature_value--;
+				aircon_temp_txt.innerHTML = temperature_value + "℃"; 
+			}
+			console.log("aircon_down");
+		});
+
+		//TV
+		$(document).on('click','#tv_power',function(e) {
+			sendIRkit_command("TV_ON");
+			console.log("tv_power");
+		});
+
+		$(document).on('click','#tv_ch_up',function(e) {
+			sendIRkit_command("TV_CH_UP");
+			console.log("tv_ch_up");
+		});
+
+		$(document).on('click','#tv_ch_down',function(e) {
+			sendIRkit_command("TV_CH_DOWN");
+			console.log("tv_ch_down");
+		});
+
+		$(document).on('click','#tv_chidegi',function(e) {
+			sendIRkit_command("TV_CHIDEGI");
+			console.log("tv_chidegi");
+		});
+
+		$(document).on('click','#tv_bs',function(e) {
+			sendIRkit_command("TV_BS");
+			console.log("tv_bs");
+		});
+
+		//オーディオ
+		$(document).on('click','#audio_power',function(e) {
+			sendIRkit_command("AUDIO_ON");
+			console.log("audio_power");
+		});
+
+
+		$(document).on('click','#audio_play',function(e) {
+			sendIRkit_command("AUDIO_PLAY");
+			console.log("audio_play");
+		});
+
+		$(document).on('click','#audio_stop',function(e) {
+			sendIRkit_command("AUDIO_STOP");
+			console.log("audio_stop");
+		});
+
+		$(document).on('click','#audio_ffskip',function(e) {
+			sendIRkit_command("AUDIO_FFSKIP");
+			console.log("audio_ffskip");
+		});
+
+
+		$(document).on('click','#audio_revskip',function(e) {
+			sendIRkit_command("AUDIO_REVSKIP");
+			console.log("audio_revskip");
+		});
+
+		// 加湿空気清浄機
+		$(document).on('click','#purifier_on',function(e) {
+			sendIRkit_command("PURIFER_ON");
+			console.log("purifier_on");
+		});
+
+		$(document).on('click','#purifier_off',function(e) {
+			sendIRkit_command("PURIFER_OFF");
+			console.log("purifier_off");
+		});
+
+		// カーテン
+		$(document).on('click','#curtain_open',function(e) {
+			sendIRkit_command("CURTAIN_OPEN");
+			console.log("curtain_open");
+		});
+
+		$(document).on('click','#curtain_close',function(e) {
+			sendIRkit_command("CURTAIN_CLOSE");
+			console.log("curtain_close");
+		});
+
+		// pet food 
+		$(document).on('click','#pet_feeder',function(e) {
+			sendIRkit_command("PET_FEEDER_PLAY");
+			console.log("pet_feeder");
+		});
+
+
+
+		//機器操作インデクス
+		$(document).on('click','.op_index',function(e) {
+			console.log("op_index");
+			myNavigator.resetToPage("op_index.html");
+		});
+
+
+    });
+
+  </script>
+
+</head>
+<body>
+  <!-- First navigation component: Navigator. This will remain always on top of the app. -->
+  <ons-navigator id="myNavigator" var="myNavigator" page="op_index.html" >
+
+  <!--ons-navigator id="myNavigator" var="myNavigator" page="tv_control.html" -->
+
+
+  </ons-navigator>
+ <!-- 
+	 機器の操作インデクス 
+ -->
+  <ons-template id="op_index.html">
+	<p></p>
+	<div class="center" id="toolbar-title">  <h1>機器の操作</h1></div>
+
+	<section style="padding-left: 10%;padding-top:2%;">
+	<ons-button modifier="quiet" style="width:26%" id="light_op"  >
+	  <img border="0" src="./images/m_button_light.png" class="btn_tap_anim"  width=75% alt="照明">
+	</ons-button>
+
+	<ons-button modifier="quiet" style="width:26%" id="aircon_op"> 
+	  <img border="0" src="./images/m_button_aircon.png" class="btn_tap_anim" width=75% alt="エアコン">
+	</ons-button>
+
+
+	<ons-button modifier="quiet" style="width:26%" id="tv_op">
+	  <img border="0" src="./images/m_button_tv.png" class="btn_tap_anim" width=75% alt="テレビ">
+	</ons-button>
+
+	<ons-button modifier="quiet" style="width:26%" id="audio_op">
+	  <img border="0" src="./images/m_button_audio.png" class="btn_tap_anim" width=75% alt="オーディオ">
+	</ons-button>
+	<ons-button modifier="quiet" style="width:26%" id="purifier_op">
+	  <img border="0" src="./images/m_button_purifier.png"  class="btn_tap_anim" width=75% alt="空気清浄機">
+	</ons-button>
+	    
+	<ons-button modifier="quiet" style="width:26%" id="curtain_op">
+	  <img border="0" src="./images/m_button_curtain.png"  class="btn_tap_anim" width=75% alt="カーテン">
+	</ons-button>
+
+
+	<ons-button modifier="quiet" style="width:26%" id="petfeeter_op">
+	  <img border="0" src="./images/m_button_servingfood.png"  class="btn_tap_anim"width=75% alt="自動餌">
+	</ons-button> 
+	</section>
+	<ons-button modifier="quiet" style="width:26%">
+		<ons-button onclick="window.location.href='index.html';" >
+		 <img border="0" src="./images/m_button_topback.png"  class="btn_tap_anim" width=75% alt="TOPに戻る">
+		</ons-button>
+	</ons-button>
+
+	    
+</ons-template>
+
+ <!-- 照明説明 -->
+  <ons-template id="light_explanation.html">
+	<p></p>
+			  <div class="center" id="toolbar-title">  <h1>照明</h1></div>
+	<p>
+		<section style="padding-left: 0%;;height: 65%;top: 50%;">
+			<div class="opration_view" style="margin: 0 auto;">
+			<img src="./images/op_home.png" class="photo eq_home" style="margin: 0 auto;" >
+			<img src="./images/operation-shomei.png" class="eq_frame blink_anime" style="top: 0px;">
+			</div>
+	</section>
+	</p>
+	<p>
+	<section style="padding-left: 0%;height: 260px;position:static" class="center" >
+			<div class="eq_desc center">
+			<p>照明を操作できます。</p>
+			</div>
+	</section>
+	<p>
+	</p>
+
+  </ons-template>
+
+	<!--照明操作-->
+	<ons-template id="light_control.html">
+
+	   <ons-page>
+		<p></p>
+		  <div class="center" id="toolbar-title">  <h1>照明</h1></div>
+		<section style="padding-left: 15%;padding-top:3%;">
+		<ons-row align="center" style="width:80%;">
+			<ons-col style="width=80%" >
+				<ons-button id="light_all_off"  >
+				<img border="0" src="./images/light_all_off_button.png"  class="btn_tap_anim" width=80% alt="全灯OFF">
+				</ons-button>
+			</ons-col>
+
+    		<ons-col  >
+				<ons-button id="light_all_on" >
+				<img border="0" src="./images/light_all_on_button.png"  class="btn_tap_anim" width=80% alt="明全灯OFF">
+				</ons-button>
+			</ons-col>
+
+    		<ons-col  >
+				<ons-button id="light_bright" >
+				<img border="0" src="./images/light_bright_button.png"  class="btn_tap_anim" width=80% alt="明るく">
+				</ons-button>
+			</ons-col>
+			</ons-row>
+
+        	<ons-row align="center" style="width:80%;">
+        		<ons-col  >
+					<ons-button id="light_reduce" >
+					 <img border="0" src="./images/light_reduce_button.png"  class="btn_tap_anim" width=80% alt="減灯">
+					</ons-button>
+				</ons-col>
+
+        		<ons-col  >
+					<ons-button id="light_night"  >
+					 <img border="0" src="./images/light_night_button.png"  class="btn_tap_anim" width=80% alt="常夜灯">
+					</ons-button>
+				</ons-col>
+
+        		<ons-col >
+					<ons-button id="light_dark"  >
+					 <img border="0" src="./images/light_dark_button.png"  class="btn_tap_anim" width=80% alt="暗く">
+					</ons-button>
+				</ons-col>
+
+			</ons-row>
+		</section>
+
+		<dev class="notice"  >
+			<p>画面はイメージであり、実際のものとは異なる場合があります。</p>
+			<p>対応携帯について詳しくは、販売員などにお問い合わせください。</p>
+		</dev>
+			<ons-button modifier="quiet"  class="op_index">
+			<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width=80% alt="機器の操作に戻る">
+			</ons-button>
+		</ons-page>
+	</ons-template>
+
+
+
+ <!-- エアコン説明 -->
+  <ons-template id="aircon_explanation.html">
+		<p></p>
+		  <div class="center" id="toolbar-title">  <h1>エアコン</h1></div>
+
+		<section style="padding-left: 0%;;height: 65%;">
+				<div class="opration_view" style="margin: 0 auto;">
+				<img src="./images/op_home.png" class="photo eq_home" style="margin: 0 auto;" >
+				<img src="./images/operation-aircom.png" class="eq_frame blink_anime" style="top: 0px;">
+				</div>
+		</section>
+
+		<section style="padding-left: 0%;height: 100%;" class="center" >
+				<div class="eq_desc center">
+				<p>エアコンを操作できます。</p>
+				</div>
+		</section>
+
+  </ons-template>
+operation-aircom.png
+	<!-エアコン-->
+	<ons-template id="aircon_control.html">
+	   <ons-page>
+		<p></p>
+		  <div class="center" id="toolbar-title">  <h1>エアコン</h1></div>
+		<section style="padding-left: 3%;padding-top:4px ">
+			<ons-row align="center">
+				<ons-col>
+					<ons-button id="aricon_on"  >
+					<img border="0" src="./images/aricon_button_on.png"  class="btn_tap_anim" width=985 alt="エアコンON">
+					</ons-button>
+				</ons-col>
+				<ons-col>
+					<ons-button id="aricon_off"  >
+					<img border="0" src="./images/aricon_button_off.png"  class="btn_tap_anim" width=85% alt="エアコンOFF">
+					</ons-button>
+				</ons-col>
+			</ons-row>
+			<ons-row align="center">
+				<ons-col>
+					<div id="aircon_panel">
+						<img border="0" src="./images/aricon_base.png"  id="aircon_base"   alt="base">
+						<ons-button id="aircon_up"  >
+							<img border="0" src="./images/aricon_button_up.png"  class="btn_tap_anim"    alt="UP">
+						</ons-button>
+
+						<ons-button id="aircon_down"  >
+							<img border="0" src="./images/aricon_button_down.png"   class="btn_tap_anim"  alt="DOWN">
+						</ons-button>
+
+						<div id="aircon_temp_txt">
+							26C
+						</div>
+					</div>
+
+				</ons-col>
+			</ons-row>
+    	</section>
+		<dev class="notice"  >
+			<p>画面はイメージであり、実際のものとは異なる場合があります。</p>
+			<p>対応携帯について詳しくは、販売員などにお問い合わせください。</p>
+		</dev>
+			<ons-button modifier="quiet"  class="op_index">
+			<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width=80% alt="機器の操作に戻る">
+			</ons-button>
+		</ons-page>
+	</ons-template>
+
+ <!-- 
+テレビ
+ 説明 -->
+  <ons-template id="tv_explanation.html">
+		<p></p>
+		  <div class="center" id="toolbar-title">  <h1>テレビ</h1></div>
+		<section style="padding-left: 0%;;height: 65%;">
+				<div class="opration_view" style="margin: 0 auto;">
+				<img src="./images/op_home.png" class="photo eq_home" style="margin: 0 auto;" >
+				<img src="./images/operation-tv.png" class="eq_frame blink_anime" style="top: 0px;">
+				</div>
+		</section>
+
+		<section style="padding-left: 0%;height: 100%;" class="center" >
+				<div class="eq_desc center">
+				<p>テレビを操作できます。</p>
+				</div>
+		</section>
+
+  </ons-template>
+
+	<!- 
+	テレビ 操作
+	 -->
+	<ons-template id="tv_control.html">
+
+	   <ons-page>
+		<p></p>
+		  <div class="center" id="toolbar-title">  <h1>テレビ</h1></div>
+
+		<section style="padding-left: 3%;padding-top:1%;">
+			<ons-row align="center">
+				<ons-col>
+					<!-- 電源 -->
+					<div id="tv_power_base">
+						<img border="0" src="./images/tv_power_base.png"    width=90% alt="power base">
+						<ons-button id="tv_power"  >
+						<img border="0" src="./images/tv_power_button.png"  class="btn_tap_anim" width=85% alt="TV電源">
+						</ons-button>
+					</div>
+				</ons-col>
+				<ons-col style="padding: 28px">
+					<div id="tv_ch_base">
+						<img border="0" src="./images/tv_ch_base.png"     alt="power base" width=90%>
+
+						<!-- チャンネル -->
+						<ons-button id="tv_ch_up"  >
+						<img border="0" src="./images/tv_ch_up_button.png"  class="btn_tap_anim" width=85% alt="TVCHUP">
+						</ons-button>
+
+						<ons-button id="tv_ch_down"  >
+						<img border="0" src="./images/tv_ch_down_button.png"  class="btn_tap_anim" width=85% alt="TVCHdown">
+						</ons-button>
+					</div>
+				</ons-col>
+
+				<!-- 地デジ/BS -->
+				<ons-col style="padding: 28px">
+						<ons-button id="tv_chidegi"  >
+						<img border="0" src="./images/tv_chidegi_button.png"  class="btn_tap_anim" width=90% alt="地デジ">
+						</ons-button>
+						<ons-button id="tv_bs"  >
+						<img border="0" src="./images/tv_bs_button.png"  class="btn_tap_anim" width=90% alt="BS">
+						</ons-button>
+				</ons-col>
+			</ons-row>
+			</section>
+		<dev class="notice"  >
+			<p>画面はイメージであり、実際のものとは異なる場合があります。</p>
+			<p>対応携帯について詳しくは、販売員などにお問い合わせください。</p>
+		</dev>
+			<ons-button modifier="quiet"  class="op_index">
+			<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width=80% alt="機器の操作に戻る">
+			</ons-button>
+		</ons-page>
+	</ons-template>
+
+ <!-- 
+ オーディオ
+ 説明 -->
+  <ons-template id="audio_explanation.html">
+
+		<p></p>
+		  <div class="center" id="toolbar-title">  <h1>オーディオ</h1></div>
+		<section style="padding-left: 0%;;height: 65%;">
+				<div class="opration_view" style="margin: 0 auto;">
+				<img src="./images/op_home.png" class="photo eq_home" style="margin: 0 auto;" >
+				<img src="./images/operation-cd.png" class="eq_frame blink_anime" style="top: 0px;">
+				</div>
+		</section>
+
+		<section style="padding-left: 0%;height: 100%;" class="center" >
+				<div class="eq_desc center">
+				<p>オーディオを操作できます。</p>
+				</div>
+		</section>
+  </ons-template>
+
+	<!- 
+	　オーディオ 操作
+	 -->
+	<ons-template id="audio_control.html">
+	   <ons-page>
+		<p></p>
+		  <div class="center" id="toolbar-title">  <h1>オーディオ</h1></div>
+
+		<section style="padding-left: 15%;padding-top:2%;">
+			<ons-row align="center">
+				<ons-col>
+					<ons-button id="audio_power"  >
+					<img border="0" src="./images/audio_power_button.png"  class="btn_tap_anim" width="80%" alt="オーディオPOWER">
+					</ons-button>
+				</ons-col>
+			</ons-row>
+
+			<ons-row align="center">
+				<ons-col>
+					<ons-button id="audio_play"  >
+					<img border="0" src="./images/audio_play_button.png"  class="btn_tap_anim" width="80%" alt="オーディオPLAY">
+					</ons-button>
+				</ons-col>
+			</ons-row>
+
+			<ons-row align="center">
+				<ons-col>
+					<ons-button id="audio_stop"  >
+					<img border="0" src="./images/audio_stop_button.png"  class="btn_tap_anim" width="80%" alt="オーディオSTOP">
+					</ons-button>
+				</ons-col>
+			</ons-row>
+
+			<ons-row align="center">
+				<ons-col>
+					<ons-button id="audio_ffskip"  >
+					<img border="0" src="./images/audio_ffskip_button.png"  class="btn_tap_anim" width="80%" alt="オーディオスキップN">
+					</ons-button>
+				</ons-col>
+			</ons-row>
+
+
+			<ons-row align="center">
+				<ons-col>
+					<ons-button id="audio_revskip"  >
+					<img border="0" src="./images/audio_revskip_button.png"  class="btn_tap_anim" width="80%" alt="オーディオ逆スキップ">
+					</ons-button>
+				</ons-col>
+			</ons-row>
+
+			</section>
+
+
+		<dev class="notice"  >
+			<p>画面はイメージであり、実際のものとは異なる場合があります。</p>
+			<p>対応携帯について詳しくは、販売員などにお問い合わせください。</p>
+		</dev>
+			<ons-button modifier="quiet"  class="op_index">
+			<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width=80% alt="機器の操作に戻る">
+			</ons-button>
+		</ons-page>
+	</ons-template>
+<!--
+ 加湿空気清浄機
+ 説明 -->
+  <ons-template id="purifier_explanation.html">
+
+		<p></p>
+		  <div class="center" id="toolbar-title">  <h1>加湿空気清浄機</h1></div>
+		<section style="padding-left: 0%;;height: 65%;">
+				<div class="opration_view" style="margin: 0 auto;">
+				<img src="./images/op_home.png" class="photo eq_home" style="margin: 0 auto;" >
+				<img src="./images/operation-kasitu.png" class="eq_frame blink_anime" style="top: 0px;">
+				</div>
+		</section>
+
+		<section style="padding-left: 0%;height: 100%;" class="center" >
+				<div class="eq_desc center">
+				<p>加湿空気清浄機を操作できます。</p>
+				</div>
+		</section>
+  </ons-template>
+
+	<!- 
+	加湿空気清浄機 操作
+	 -->
+	<ons-template id="purifier_control.html">
+
+	   <ons-page>
+		<p></p>
+		  <div class="center" id="toolbar-title">  <h1>加湿空気清浄機</h1></div>
+		<section style="padding-left: 15%;padding-top: 5%">
+			<ons-row align="center">
+				<ons-col>
+					<ons-button id="purifier_on"  >
+					<img border="0" src="./images/purifier_on_button.png"  class="btn_tap_anim" width=90% alt="加湿空気清浄機ON">
+					</ons-button>
+				</ons-col>
+			</ons-row>
+			<p></p>
+			<p></p>
+			<ons-row align="center">
+				<ons-col>
+					<ons-button id="purifier_off"  >
+					<img border="0" src="./images/purifier_off_button.png"  class="btn_tap_anim" width=90% alt="加湿空気清浄機OFFY">
+					</ons-button>
+				</ons-col>
+			</ons-row>
+
+			</section>
+
+
+		<dev class="notice"  >
+			<p>画面はイメージであり、実際のものとは異なる場合があります。</p>
+			<p>対応携帯について詳しくは、販売員などにお問い合わせください。</p>
+		</dev>
+			<ons-button modifier="quiet"  class="op_index">
+			<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width=80% alt="機器の操作に戻る">
+			</ons-button>
+		</ons-page>
+	</ons-template>
+	/*
+	カーテン
+
+	*/
+
+ <!-- 
+ カーテン
+ 説明 -->
+  <ons-template id="curtain_explanation.html">
+		<p></p>
+		  <div class="center" id="toolbar-title">  <h1>カーテン</h1></div>
+		<section style="padding-left: 0%;;height: 65%;">
+				<div class="opration_view" style="margin: 0 auto;">
+				<img src="./images/op_home.png" class="photo eq_home" style="margin: 0 auto;" >
+				<img src="./images/operation-cur.png" class="eq_frame blink_anime" style="top: 0px;">
+				</div>
+		</section>
+
+		<section style="padding-left: 0%;height: 100%;" class="center" >
+				<div class="eq_desc center">
+				<p>カーテンを操作できます。</p>
+				</div>
+		</section>
+  </ons-template>
+
+	<!- 
+	カーテン 操作
+	 -->
+	<ons-template id="curtain_control.html">
+
+	   <ons-page>
+		<p></p>
+		  <div class="center" id="toolbar-title">  <h1>カーテン</h1></div>
+		<section style="padding-left: 20%;padding-top: 3%">
+			<ons-row align="center">
+				<ons-col>
+					<ons-button id="curtain_open"  >
+					<img border="0" src="./images/curtain_open_button.png"  class="btn_tap_anim" width=90% alt="カーテン開ける">
+					</ons-button>
+				</ons-col>
+			</ons-row>
+			<p></p>
+			<p></p>
+			<ons-row align="center">
+				<ons-col>
+					<ons-button id="curtain_close"  >
+					<img border="0" src="./images/curtain_close_button.png"  class="btn_tap_anim" width=90% alt="カーテン閉める">
+					</ons-button>
+				</ons-col>
+			</ons-row>
+
+			</section>
+
+		<dev class="notice"  >
+			<p>画面はイメージであり、実際のものとは異なる場合があります。</p>
+			<p>対応携帯について詳しくは、販売員などにお問い合わせください。</p>
+		</dev>
+			<ons-button modifier="quiet"  class="op_index">
+			<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width=80% alt="機器の操作に戻る">
+			</ons-button>
+		</ons-page>
+	</ons-template>
+
+
+	<!--
+	自動給餌器
+
+	 -->
+
+ <!-- 
+ 自動給餌器
+ 説明 -->
+  <ons-template id="petffood_explanation.html">
+		<p></p>
+		  <div class="center" id="toolbar-title">  <h1>自動給餌器</h1></div>
+		<section style="padding-left: 0%;;height: 65%;top: 50%;">
+				<div class="opration_view" style="margin: 0 auto;">
+				<img src="./images/op_home.png" class="photo eq_home" style="margin: 0 auto;" >
+				<img src="./images/operation-kyuji.png" class="eq_frame blink_anime" style="top: 0px;">
+				</div>
+		</section>
+
+		<section style="padding-left: 0%;height: 100%;" class="center" >
+				<div class="eq_desc center">
+				<p>自動給餌器を操作できます。</p>
+				</div>
+		</section>
+  </ons-template>
+	<!- 
+	自動給餌器 操作
+	 -->
+	<ons-template id="petffood_control.html">
+
+	   <ons-page>
+		<p></p>
+		  <div class="center" id="toolbar-title">  <h1>自動給餌器</h1></div>
+		<section style="padding-left: 15%;padding-top: 6%">
+			<ons-row align="center">
+				<ons-col>
+					<ons-button id="pet_feeder"  >
+					<img border="0" src="./images/pet_feeder_button.png"  class="btn_tap_anim" width=80% alt="エサを与える">
+					</ons-button>
+				</ons-col>
+			</ons-row>
+			<p></p>
+			</ons-row>
+			</section>
+		<dev class="notice"  >
+			<p>画面はイメージであり、実際のものとは異なる場合があります。</p>
+			<p>対応携帯について詳しくは、販売員などにお問い合わせください。</p>
+		</dev>
+			<ons-button modifier="quiet"  class="op_index">
+			<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width=80% alt="機器の操作に戻る">
+			</ons-button>
+		</ons-page>
+	</ons-template>
+
+    
+</body>
+</html>
