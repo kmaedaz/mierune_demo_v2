@@ -9,9 +9,10 @@
     "external_plugins": [
         "cordova-plugin-whitelist@1.2.2",
         "cordova-plugin-splashscreen@3.2.2",
-        "cordova-custom-config@2.0.3"
+        "cordova-custom-config@2.0.3",
+        "cordova-plugin-media@2.3.0"
     ],
-    "title-ja": "デモ",
+    "title-ja": "test",
     "title-en": "",
     "description-ja": "",
     "description-en": "",
@@ -19,5 +20,5 @@
     "platform": [
         "android"
     ],
-    "name": "generated-1484007931-585b8acc013eb04c4c01b334"
+    "name": "generated-1484136813-585b8acc013eb04c4c01b334"
 }

@@ -181,7 +181,7 @@
 		$(document).on('click','#scene_detail_return',function(e) {
 			setTimeout(	function (){
 				myNavigator.resetToPage("scene_detail_return.html");  //帰宅
-                 scenario_exec("SCENARIO_OUTING");
+                 scenario_exec("SCENARIO_RETURNING");
 			} , OP_TIME);
 			console.log("scene_detail_outing");
 		});
@@ -274,11 +274,10 @@
 	３０秒間操作がない場合、初期設定され、シナリオTOPに戻る。
 	 -->
   <ons-template id="scene_detail_heatstroke.html">
-			<p></p>
 			  <div class="center" id="toolbar-title">  <h1>熱中症予防シナリオ</h1></div>
     <section style="padding-left: 0px; text-align: center;">
                 <div class="scene_view" >
-                    <video src="./movie/heatstroke_161227.mp4" autoplay  preload="none" class="movie_field" width="90%"> </video>
+                    <video src="./movie/heatstroke_161227.mp4" autoplay  preload="none" class="movie_field" width="85%"> </video>
                     <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
                     <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
                 	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
@@ -294,9 +293,7 @@
     			カーテンが閉まります。
     			</p>
     			<div class="scene_top_button">
-    				<ons-button modifier="quiet"  class="exp_index">
-    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim"  width=60% alt="機器の操作に戻る">
-    				</ons-button>
+    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index""   alt="機器の操作に戻る">
     			</div>
 
 			</div>
@@ -311,11 +308,10 @@
 	
 	 -->
   <ons-template id="scene_detail_crime.html">
-			<p></p>
 			  <div class="center" id="toolbar-title">  <h1>防犯シナリオ</h1></div>
     <section style="padding-left: 0px; text-align: center;">
             <div class="scene_view" >
-                <video src="./movie/crime_161227.mp4" autoplay preload="none" class="movie_field" width="90%"> </video>
+                <video src="./movie/crime_161227.mp4" autoplay preload="none" class="movie_field" width="85%"> </video>
                 <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
     	         <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
             	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
@@ -331,9 +327,7 @@
 				照明が点灯します。
 			</p>
         		<div class="scene_top_button">
-    				<ons-button modifier="quiet"  class="exp_index">
-    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim"  width=60% alt="機器の操作に戻る">
-    				</ons-button>
+    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index""   alt="機器の操作に戻る">
     			</div>
 			</div>>
 
@@ -349,11 +343,10 @@
 	映像終了後（映像は静止状態）に演出照明がOFF、５秒後にカーテンが閉まり、
 	 -->
   <ons-template id="scene_detail_wakup.html">
-			<p></p>
 			  <div class="center" id="toolbar-title">  <h1>起床シナリオ</h1></div>
     <section style="padding-left: 0px; text-align: center;">
             <div class="scene_view" >
-                <video src="./movie/wakeup_161227.mp4" autoplay class="movie_field" width="90%"> </video>
+                <video src="./movie/wakeup_161227.mp4" autoplay class="movie_field" width="85%"> </video>
                 <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
                 <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
             	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
@@ -369,11 +362,9 @@
 				カーテンが開きます。
 
 			</p>
-        	<div class="scene_top_button">
-				<ons-button modifier="quiet"  class="exp_index">
-				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim"  width=60% alt="機器の操作に戻る">
-				</ons-button>
-			</div>
+            	<div class="scene_top_button">
+    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index""   alt="機器の操作に戻る">
+    			</div>
 
 			</div>
 
@@ -388,11 +379,10 @@
 	映像終了後（映像は静止状態）に演出照明がOFF、５秒後にカーテンが閉まり、
 	 -->
   <ons-template id="scene_detail_outing.html">
-			<p></p>
 			  <div class="center" id="toolbar-title">  <h1>外出シナリオ</h1></div>
         <section style="padding-left: 0px; text-align: center;">
             <div class="scene_view" >
-                <video src="./movie/goout_161227.mp4" autoplay class="movie_field" width="90%"> </video>
+                <video src="./movie/goout_161227.mp4" autoplay class="movie_field" width="85%"> </video>
                 <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
                 <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
             	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
@@ -408,11 +398,9 @@
 				照明とエアコンのスイッチがオフになります。
 
 			</p>
-        	<div class="scene_top_button">
-				<ons-button modifier="quiet"  class="exp_index">
-				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim"  width=60% alt="機器の操作に戻る">
-				</ons-button>
-			</div>
+            	<div class="scene_top_button">
+    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index""   alt="機器の操作に戻る">
+    			</div>
 
 			</div>
 	</section>
@@ -428,11 +416,11 @@
 	映像終了後（映像は静止状態）に演出照明がOFF、５秒後にカーテンが閉まり、
 	 -->
   <ons-template id="scene_detail_return.html">
-			<p></p>
 			  <div class="center" id="toolbar-title">  <h1>帰宅シナリオ</h1></div>
         <section style="padding-left: 0px; text-align: center;">
             <div class="scene_view" >
-                <video src="./movie/returnhome_161227.mp4" autoplay class="movie_field" width="90%"  > </video>
+                <video src="./movie/returnhome_161227a.mp4" id="returnhome" autoplay class="movie_field" width="85%"  > </video>
+                                                                
                 <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
                 <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
             	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
@@ -448,11 +436,9 @@
 				エアコンと照明をオンにし、給湯を行います。
 
 			</p>
-        	<div class="scene_top_button">
-				<ons-button modifier="quiet"  class="exp_index">
-				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim"  width=60% alt="機器の操作に戻る">
-				</ons-button>
-			</div>
+            	<div class="scene_top_button">
+    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index""   alt="機器の操作に戻る">
+    			</div>
 
 			</div>
 

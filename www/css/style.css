@@ -146,8 +146,8 @@ h1{
     color: #ffffff;
 	background-color: #00ac7a;
     font-weight: bold;
-    margin: 0 0 0.8em;
-    padding: 0.6em 0.6em 0.6em 2.8em;
+    margin: 0 0 0.4em;
+    padding: 0.6em 0.6em 0.6em 2.4em;
     text-align: center;
 /*    border-bottom: 3px solid #B92A2C; */
 
@@ -215,27 +215,26 @@ h3 {
 /* box-shadow */
 .eq_desc {
     position: relative;
-    bottom:0px;
-    font-size: 1.8em;
-    /*! width：100%; */
-     background-repeat: no-repeat;
-     background-image: url('../images/scene_description.png');
-     background-size: 100% ;
-     height: 260px;
-     padding: 8px ;
-//   margin: 0px;
-
+    bottom: 0px;
+    font-size: 1.6em;
+    background-repeat: no-repeat;
+    background-image: url(../images/scene_description.png);
+    background-size:cover;
+    width:auto;
+    height: 116px;
+    padding: 8px;
+    
 }
 
 
 /* box-shadow */
 .eq_desc .scene_index_top_button {
-    position:absolute;
+/*    position:absolute; */
+    bottom:20px;
     margin-right: 3px;
-    top: 240px;
+/*    top: 240px; */
     right: 20px;
-    width:230px;
-    /* border */
+    width:154px;
     padding-top: 22px;
     padding-right: 22px;
     padding-bottom: 22px;
@@ -244,13 +243,13 @@ h3 {
 
 .eq_desc p {
     margin-right: 3px;
-    top: 0px;
-    left: 30px;
+    /* top: -20px; */
+    /* left: 24px; */
     text-align: left;
-    padding-top: 8px;
-    padding-right: 16px;
-    padding-bottom: 20px;
-    padding-left: 44px;
+    /* padding-top: 8px; */
+    padding-right: 170px;
+    padding-bottom: 50px;
+    padding-left: 56px;
 }
 
 /* 操作説明 */
@@ -258,7 +257,7 @@ h3 {
     position: relative;
 /*    height: 0; */
     width:100%;
-    height:650px;
+    height:228px;
 	margin: 0 auto;
     padding-top: 0px;
     padding-right: 0px;
@@ -310,7 +309,7 @@ h3 {
 
 .scene_frame  {
     position:absolute;
-	width:80%;
+/*	width:80%; */
     margin: 0px;
     top: 5%;
     left: 8%;
@@ -320,14 +319,12 @@ h3 {
 
 .scene_top_button {
     position: absolute;
-    bottom: 128px;
-    right: -89px;
-    padding-right: 8px;
-    padding-bottom: 22px;
-    padding-left: 8px;
+    bottom: 0px;
+    right: 0px;
+    /* padding-right: 8px; */
+    /* padding-bottom: 22px; */
+    /* padding-left: 8px; */
     /* color: #d81414; */
-}
-
 
 }
 
@@ -339,7 +336,8 @@ h3 {
 .movie_field｛
     display:block;
     width: 100%;
-/*    height:100%; */
+    display:none;
+    height:100%; 
     max-width: 100%;
     max-height:100%;
 
