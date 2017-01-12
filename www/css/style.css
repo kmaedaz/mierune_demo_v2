@@ -152,29 +152,6 @@ h1{
 /*    border-bottom: 3px solid #B92A2C; */
 
 }
-/*
-h1:before{
-    content: "□";
-    font-size: 160%;
-    position: absolute;
-    color: #ff6b6e;
-    top: -0.4em;
-    left: 0.4em;
-    height: 12px;
-    width: 12px;
-}
- 
-h1:after{
-    content: "□";
-    font-size: 160%;
-    position: absolute;
-    color: #B92A2C;
-    top:  -0.2em;
-    left: 0.2em;
-    height: 12px;
-    width: 12px;
-}
-*/
 
 h2{
     position: relative;
@@ -230,6 +207,8 @@ h3 {
 /* box-shadow */
 .eq_desc .scene_index_top_button {
 /*    position:absolute; */
+
+
     bottom:20px;
     margin-right: 3px;
 /*    top: 240px; */
@@ -321,10 +300,6 @@ h3 {
     position: absolute;
     bottom: 0px;
     right: 0px;
-    /* padding-right: 8px; */
-    /* padding-bottom: 22px; */
-    /* padding-left: 8px; */
-    /* color: #d81414; */
 
 }
 
@@ -340,7 +315,6 @@ h3 {
     height:100%; 
     max-width: 100%;
     max-height:100%;
-
 ｝
 
 video {
@@ -400,7 +374,9 @@ video {
 }
 
 .op_index{
-    bottom: 0%;
+    bottom: 2%;
+    left:2%;    
+    width:227px;
 }
 /*
  CSS3 アニメーション

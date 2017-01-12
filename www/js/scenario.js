@@ -10,7 +10,10 @@ function scenario_play(scenario_arr){
     var com_tmp = scenario_arr.shift();
 	var next_arr =scenario_arr;
     console.log("next"+next_arr);
-    var n=10;
+    if(!com_tmp){
+    	return false;	
+    }
+    var n=1;
 	var caommand =com_tmp.split(":");
 	if(!caommand){
 		return false;	
@@ -32,13 +35,13 @@ function scenario_play(scenario_arr){
             } , n*1000);
         } else if(key=="HIDE") {
             console.log("HIDE"+val);
-			$(key).hide();			
+			$(val).hide();			
             setTimeout(    function (){
                 scenario_play(next_arr);
             } , n);
         } else if(key=="SHOW") {
             console.log("SHOW"+val);
-			$(val).show();			
+			$(val).show();
             setTimeout(    function (){
                 scenario_play(next_arr);
             } , n);
@@ -50,6 +53,9 @@ function scenario_play(scenario_arr){
                  scenario_play(next_arr);
             } , n);
         } else if( key=="VIDEO"){
+
+/*  OUNSEN UI VIDEO　オブジェクトがうまく取得できないので暫定廃止
+            
                 val ="video#returnhome.movie_field";
                 console.log("VIDEO:"+val+"src:"+src);
                 console.table( $(val) );
@@ -63,8 +69,9 @@ function scenario_play(scenario_arr){
                 //video_tmp.currentSrc =src;
                 video_tmp.src =src;
 
-                video_tmp.load();
-                video_tmp.play();
+//                video_tmp.load();
+//                video_tmp.play();
+*/
                 setTimeout(    function (){
                     scenario_play(next_arr);
                 } , n);

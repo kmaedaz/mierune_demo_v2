@@ -105,6 +105,18 @@
 			 opration_flag=false;
 		}
 
+    (function ($) {
+        $('#returnhomea').on('show', function(){
+            this.play();
+            console.log("aaa");
+        });
+        $('#returnhomeb').on('show', function(){
+            this.play();
+            console.log("cccc");
+        });
+
+    })(jQuery);
+
     ons.ready(function() {
 		console.log("Onsen UI is ready!");
 		//
@@ -179,10 +191,18 @@
 
 		//帰宅
 		$(document).on('click','#scene_detail_return',function(e) {
-			setTimeout(	function (){
-				myNavigator.resetToPage("scene_detail_return.html");  //帰宅
-                 scenario_exec("SCENARIO_RETURNING");
-			} , OP_TIME);
+
+            setTimeout(	function (){
+				myNavigator.resetToPage("scene_detail_return_a.html");  //帰宅前半
+                 scenario_exec("SCENARIO_RETURNING",myNavigator);
+
+                    setTimeout(    function (){
+        				myNavigator.resetToPage("scene_detail_return_b.html", {animation: 'fade'});  //帰宅後半B
+                    } , 16000);
+
+
+
+            } , OP_TIME);
 			console.log("scene_detail_outing");
 		});
 
@@ -415,12 +435,11 @@
 	カーテンが開きます。
 	映像終了後（映像は静止状態）に演出照明がOFF、５秒後にカーテンが閉まり、
 	 -->
-  <ons-template id="scene_detail_return.html">
+  <ons-template id="scene_detail_return_a.html">
 			  <div class="center" id="toolbar-title">  <h1>帰宅シナリオ</h1></div>
         <section style="padding-left: 0px; text-align: center;">
             <div class="scene_view" >
-                <video src="./movie/returnhome_161227a.mp4" id="returnhome" autoplay class="movie_field" width="85%"  > </video>
-                                                                
+                <video src="./movie/returnhome_161227a.mp4" id="returnhomea" autoplay class="movie_field" width="85%" > </video>
                 <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
                 <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
             	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
@@ -444,5 +463,43 @@
 
 	</section>
   </ons-template>
+
+    
+   <!-- 
+    帰宅
+	朝起きると、オーディオがオンになり、
+	カーテンが開きます。
+	映像終了後（映像は静止状態）に演出照明がOFF、５秒後にカーテンが閉まり、
+	 -->
+  <ons-template id="scene_detail_return_b.html">
+			  <div class="center" id="toolbar-title">  <h1>帰宅シナリオ</h1></div>
+        <section style="padding-left: 0px; text-align: center;">
+            <div class="scene_view" >
+                <video src="./movie/returnhome_161227b.mp4" id="returnhomea" autoplay class="movie_field" width="85%"  > </video>
+                <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
+                <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
+            	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
+            	<img src="./images/scenario-cur.png" class="scene_frame blink_anime small_view scenario-cur" >
+                <img src="./images/scenario-kasitu.png" class="scene_frame blink_anime small_view scenario-kasitu" >
+                <img src="./images/scenario-shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
+                <img src="./images/scenario-tv.png"  class="scene_frame blink_anime small_view scenario-tv" >
+                <img src="./images/scenario-kyuji.png" class="scene_frame blink_anime small_view scenario-kyuji" >
+			</div>
+
+			<div class="eq_desc">
+			<p>				帰宅する前に外からの遠隔操作で、
+				エアコンと照明をオンにし、給湯を行います。
+
+			</p>
+            	<div class="scene_top_button">
+    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index""   alt="機器の操作に戻る">
+    			</div>
+
+			</div>
+
+	</section>
+  </ons-template>
+   
+    
 </body>
 </html>

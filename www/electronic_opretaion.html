@@ -141,9 +141,9 @@
 		$(document).on('click','#light_op',function(e) {
 			setTimeout(	function (){
 				myNavigator.resetToPage("light_explanation.html",{ animation: "lift" });
-					//setTimeout(	function (){
-					//myNavigator.resetToPage("light_control.html");
-					//} , NEXTPAGE_TIME);
+					setTimeout(	function (){
+					myNavigator.resetToPage("light_control.html");
+					} , NEXTPAGE_TIME);
 			} , OP_TIME);
 
 			console.log("light_op");
