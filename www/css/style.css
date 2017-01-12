@@ -198,20 +198,14 @@ h3 {
     background-image: url(../images/scene_description.png);
     background-size:cover;
     width:auto;
-    height: 116px;
-    padding: 8px;
+    height: 260px;
+    padding: 4px;
     
 }
 
-
-/* box-shadow */
 .eq_desc .scene_index_top_button {
-/*    position:absolute; */
-
-
     bottom:20px;
     margin-right: 3px;
-/*    top: 240px; */
     right: 20px;
     width:154px;
     padding-top: 22px;
@@ -247,7 +241,7 @@ h3 {
 
 .eq_home {
     position:absolute;
-	width:94%;
+	width:98%;
     margin: 0px;
     top: 0px;
     left: 0px;
@@ -257,7 +251,7 @@ h3 {
 
 .eq_frame  {
     position:absolute;
-	width:94%;
+	width:98%;
     margin: 0px;
     top: 0px;
     left: 0px;
@@ -298,8 +292,8 @@ h3 {
 
 .scene_top_button {
     position: absolute;
-    bottom: 0px;
-    right: 0px;
+    bottom: 6px;
+    right: 16px;
 
 }
 
@@ -335,7 +329,7 @@ video {
     top: 9%;
     left: 20%;
 */
-    width: 25%;
+    width: 28%;
 }
 /* シナリオ　家電　点滅 */
 .scenario-aircom{

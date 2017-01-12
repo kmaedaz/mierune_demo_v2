@@ -147,3 +147,17 @@ function sendIRkit_command(val) {
     return ret;
 };
 
+
+// コマンドダブル送信
+// 引数にキー名を指定,
+//  
+// return true:success false:Failure
+function sendIRkit_dbl_command(val,n) {
+    console.log("sendIRkit_dbl_command"+val);
+    sendIRkit_command(val);
+    setTimeout(    function (){
+         sendIRkit_command(val);
+    } , n); 
+
+}
+

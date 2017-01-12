@@ -29,7 +29,7 @@
         position: relative;
     }
 
-	#aircon_base{
+    #aircon_base{
 /*       position: absolute; */
         top: 32px;
         Left: 60px;
@@ -66,8 +66,8 @@
 
     #tv_power {
         position: absolute;
-        top: 84px;
-        Left: -10px;
+        top: 88px;
+        Left: -16px;
     }
     
     #tv_ch_base {
@@ -78,13 +78,13 @@
     #tv_ch_up {
         position: absolute;
         top: 86px;
-        Left: -18px;
+        Left: -24px;
     }
     
     #tv_ch_down {
         position: absolute;
-        top: 232px;
-        Left: -18px;
+        top: 242px;
+        Left: -24px;
     }
     
 	</style>
@@ -238,7 +238,7 @@
 		//イベントハンドら
 		$(document).on('click','#light_all_on',function(e) {
 			sendIRkit_command("LIGHT_ON");
-			console.log("ここにlight_all_onを書きますlight_all_of111111111111111111f");
+			console.log("ight_all_on");
 		});
 
 		//イベント
@@ -308,6 +308,7 @@
 		//TV
 		$(document).on('click','#tv_power',function(e) {
 			sendIRkit_command("TV_ON");
+            //sendIRkit_dbl_command("TV_ON",2000);
 			console.log("tv_power");
 		});
 
@@ -372,12 +373,12 @@
 
 		// カーテン
 		$(document).on('click','#curtain_open',function(e) {
-			sendIRkit_command("CURTAIN_OPEN");
+			sendIRkit_dbl_command("CURTAIN_OPEN",2000);
 			console.log("curtain_open");
 		});
 
 		$(document).on('click','#curtain_close',function(e) {
-			sendIRkit_command("CURTAIN_CLOSE");
+			sendIRkit_dbl_command("CURTAIN_CLOSE",2000);
 			console.log("curtain_close");
 		});
 
@@ -458,13 +459,13 @@
  <!-- 照明説明 -->
   <ons-template id="light_explanation.html">
 			  <div class="center" id="toolbar-title">  <h1>照明</h1></div>
-		<section style="padding-left: 0%;top: 50%;">
+        <section style="padding-left: 0%;height: 65%;top: 45%;">
 			<div class="opration_view" style="margin: 0 auto;">
 			<img src="./images/op_home.png" class="photo eq_home" style="margin: 0 auto;" >
 			<img src="./images/operation-shomei.png" class="eq_frame blink_anime" style="top: 0px;">
 			</div>
 	</section>
-	<section style="padding-left: 0%;height: 120px" class="center" >
+        <section style="padding-left: 0%;height: 260px" class="center" >
 			<div class="eq_desc center">
 			<p>照明を操作できます。</p>
 			</div>
@@ -526,7 +527,7 @@
 			<p>対応携帯について詳しくは、販売員などにお問い合わせください。</p>
 		</dev>
 			<ons-button modifier="quiet"  class="op_index">
-			<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width=80% alt="機器の操作に戻る">
+    		<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width="80%" alt="機器の操作に戻る">
 			</ons-button>
 		</ons-page>
 	</ons-template>
@@ -537,22 +538,21 @@
   <ons-template id="aircon_explanation.html">
 		  <div class="center" id="toolbar-title">  <h1>エアコン</h1></div>
 
-        <section style="padding-left: 0%;;height: 60%;top: 50%;">
+        <section style="padding-left: 0%;height: 65%;top: 45%;">
 				<div class="opration_view" style="margin: 0 auto;">
 				<img src="./images/op_home.png" class="photo eq_home" style="margin: 0 auto;" >
 				<img src="./images/operation-aircom.png" class="eq_frame blink_anime" style="top: 0px;">
 				</div>
 		</section>
 
-        <section style="padding-left: 0%;height: 120px" class="center" >
+        <section style="padding-left: 0%;height: 260px" class="center" >
 				<div class="eq_desc center">
 				<p>エアコンを操作できます。</p>
 				</div>
 		</section>
-
   </ons-template>
-operation-aircom.png
-	<!-エアコン-->
+
+    <!-エアコン-->
 	<ons-template id="aircon_control.html">
 	   <ons-page>
 		  <div class="center" id="toolbar-title">  <h1>エアコン</h1></div>
@@ -597,7 +597,7 @@ operation-aircom.png
 			<p>対応携帯について詳しくは、販売員などにお問い合わせください。</p>
 		</dev>
 			<ons-button modifier="quiet"  class="op_index">
-			<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width=80% alt="機器の操作に戻る">
+        	<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width="80%" alt="機器の操作に戻る">
 			</ons-button>
 		</ons-page>
 	</ons-template>
@@ -607,14 +607,14 @@ operation-aircom.png
  説明 -->
   <ons-template id="tv_explanation.html">
 		  <div class="center" id="toolbar-title">  <h1>テレビ</h1></div>
-        <section style="padding-left: 0%;;height: 60%;top: 50%;">
+        <section style="padding-left: 0%;height: 65%;top: 45%;">
 				<div class="opration_view" style="margin: 0 auto;">
 				<img src="./images/op_home.png" class="photo eq_home" style="margin: 0 auto;" >
 				<img src="./images/operation-tv.png" class="eq_frame blink_anime" style="top: 0px;">
 				</div>
 		</section>
 
-       <section style="padding-left: 0%;height: 120px" class="center" >
+        <section style="padding-left: 0%;height: 260px" class="center" >
 				<div class="eq_desc center">
 				<p>テレビを操作できます。</p>
 				</div>
@@ -626,9 +626,7 @@ operation-aircom.png
 	テレビ 操作
 	 -->
 	<ons-template id="tv_control.html">
-
 	   <ons-page>
-		<p></p>
 		  <div class="center" id="toolbar-title">  <h1>テレビ</h1></div>
 
 		<section style="padding-left: 3%;padding-top:1%;">
@@ -673,7 +671,7 @@ operation-aircom.png
 			<p>対応携帯について詳しくは、販売員などにお問い合わせください。</p>
 		</dev>
 			<ons-button modifier="quiet"  class="op_index">
-			<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width=80% alt="機器の操作に戻る">
+        	<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width="80%" alt="機器の操作に戻る">
 			</ons-button>
 		</ons-page>
 	</ons-template>
@@ -683,14 +681,14 @@ operation-aircom.png
  説明 -->
   <ons-template id="audio_explanation.html">
 		  <div class="center" id="toolbar-title">  <h1>オーディオ</h1></div>
-        <section style="padding-left: 0%;;height: 60%;top: 50%;">
+        <section style="padding-left: 0%;height: 65%;top: 45%;">
 				<div class="opration_view" style="margin: 0 auto;">
 				<img src="./images/op_home.png" class="photo eq_home" style="margin: 0 auto;" >
 				<img src="./images/operation-cd.png" class="eq_frame blink_anime" style="top: 0px;">
 				</div>
 		</section>
 
-      <section style="padding-left: 0%;height: 120px" class="center" >
+        <section style="padding-left: 0%;height: 260px" class="center" >
 				<div class="eq_desc center">
 				<p>オーディオを操作できます。</p>
 				</div>
@@ -702,14 +700,13 @@ operation-aircom.png
 	 -->
 	<ons-template id="audio_control.html">
 	   <ons-page>
-		<p></p>
 		  <div class="center" id="toolbar-title">  <h1>オーディオ</h1></div>
 
-		<section style="padding-left: 20%;padding-top:2%;">
+		<section style="padding-left: 20%;padding-top:3%;">
 			<ons-row align="center">
 				<ons-col>
 					<ons-button id="audio_power"  >
-					<img border="0" src="./images/audio_power_button.png"  class="btn_tap_anim" width="75%" alt="オーディオPOWER">
+					<img border="0" src="./images/audio_power_button.png"  class="btn_tap_anim" width="73%" alt="オーディオPOWER">
 					</ons-button>
 				</ons-col>
 			</ons-row>
@@ -717,7 +714,7 @@ operation-aircom.png
 			<ons-row align="center">
 				<ons-col>
 					<ons-button id="audio_play"  >
-					<img border="0" src="./images/audio_play_button.png"  class="btn_tap_anim" width="75%" alt="オーディオPLAY">
+					<img border="0" src="./images/audio_play_button.png"  class="btn_tap_anim" width="73%" alt="オーディオPLAY">
 					</ons-button>
 				</ons-col>
 			</ons-row>
@@ -725,7 +722,7 @@ operation-aircom.png
 			<ons-row align="center">
 				<ons-col>
 					<ons-button id="audio_stop"  >
-					<img border="0" src="./images/audio_stop_button.png"  class="btn_tap_anim" width="75%" alt="オーディオSTOP">
+					<img border="0" src="./images/audio_stop_button.png"  class="btn_tap_anim" width="73%" alt="オーディオSTOP">
 					</ons-button>
 				</ons-col>
 			</ons-row>
@@ -733,7 +730,7 @@ operation-aircom.png
 			<ons-row align="center">
 				<ons-col>
 					<ons-button id="audio_ffskip"  >
-					<img border="0" src="./images/audio_ffskip_button.png"  class="btn_tap_anim" width="75%" alt="オーディオスキップN">
+					<img border="0" src="./images/audio_ffskip_button.png"  class="btn_tap_anim" width="73%" alt="オーディオスキップN">
 					</ons-button>
 				</ons-col>
 			</ons-row>
@@ -742,7 +739,7 @@ operation-aircom.png
 			<ons-row align="center">
 				<ons-col>
 					<ons-button id="audio_revskip"  >
-					<img border="0" src="./images/audio_revskip_button.png"  class="btn_tap_anim" width="75%" alt="オーディオ逆スキップ">
+					<img border="0" src="./images/audio_revskip_button.png"  class="btn_tap_anim" width="73%" alt="オーディオ逆スキップ">
 					</ons-button>
 				</ons-col>
 			</ons-row>
@@ -755,7 +752,7 @@ operation-aircom.png
 			<p>対応携帯について詳しくは、販売員などにお問い合わせください。</p>
 		</dev>
 			<ons-button modifier="quiet"  class="op_index">
-			<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width=80% alt="機器の操作に戻る">
+        	<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width="80%" alt="機器の操作に戻る">
 			</ons-button>
 		</ons-page>
 	</ons-template>
@@ -764,14 +761,14 @@ operation-aircom.png
  説明 -->
   <ons-template id="purifier_explanation.html">
 		  <div class="center" id="toolbar-title">  <h1>加湿空気清浄機</h1></div>
-        <section style="padding-left: 0%;;height: 60%;top: 50%;">
+        <section style="padding-left: 0%;height: 65%;top: 45%;">
 				<div class="opration_view" style="margin: 0 auto;">
 				<img src="./images/op_home.png" class="photo eq_home" style="margin: 0 auto;" >
 				<img src="./images/operation-kasitu.png" class="eq_frame blink_anime" style="top: 0px;">
 				</div>
 		</section>
 
-        <section style="padding-left: 0%;height: 120px" class="center" >
+        <section style="padding-left: 0%;height: 260px" class="center" >
 				<div class="eq_desc center">
 				<p>加湿空気清浄機を操作できます。</p>
 				</div>
@@ -812,7 +809,7 @@ operation-aircom.png
 			<p>対応携帯について詳しくは、販売員などにお問い合わせください。</p>
 		</dev>
 			<ons-button modifier="quiet"  class="op_index">
-			<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width=80% alt="機器の操作に戻る">
+        	<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width="80%" alt="機器の操作に戻る">
 			</ons-button>
 		</ons-page>
 	</ons-template>
@@ -826,14 +823,14 @@ operation-aircom.png
  説明 -->
   <ons-template id="curtain_explanation.html">
 		  <div class="center" id="toolbar-title">  <h1>カーテン</h1></div>
-        <section style="padding-left: 0%;;height: 60%;top: 50%;">
+        <section style="padding-left: 0%;height: 65%;top: 45%;">
 				<div class="opration_view" style="margin: 0 auto;">
 				<img src="./images/op_home.png" class="photo eq_home" style="margin: 0 auto;" >
 				<img src="./images/operation-cur.png" class="eq_frame blink_anime" style="top: 0px;">
 				</div>
 		</section>
 
-        <section style="padding-left: 0%;height: 120px" class="center" >
+        <section style="padding-left: 0%;height: 260px" class="center" >
 				<div class="eq_desc center">
 				<p>カーテンを操作できます。</p>
 				</div>
@@ -844,24 +841,20 @@ operation-aircom.png
 	カーテン 操作
 	 -->
 	<ons-template id="curtain_control.html">
-
 	   <ons-page>
-		<p></p>
 		  <div class="center" id="toolbar-title">  <h1>カーテン</h1></div>
 		<section style="padding-left: 20%;padding-top: 2%">
 			<ons-row align="center">
 				<ons-col>
 					<ons-button id="curtain_open"  >
-					<img border="0" src="./images/curtain_open_button.png"  class="btn_tap_anim" width=800% alt="カーテン開ける">
+					<img border="0" src="./images/curtain_open_button.png"  class="btn_tap_anim" width=80% alt="カーテン開ける">
 					</ons-button>
 				</ons-col>
 			</ons-row>
-    		<ons-row align="center">
-    		</ons-row>
 			<ons-row align="center">
 				<ons-col>
 					<ons-button id="curtain_close"  >
-					<img border="0" src="./images/curtain_close_button.png"  class="btn_tap_anim" width=800% alt="カーテン閉める">
+					<img border="0" src="./images/curtain_close_button.png"  class="btn_tap_anim" width=80% alt="カーテン閉める">
 					</ons-button>
 				</ons-col>
 			</ons-row>
@@ -873,7 +866,7 @@ operation-aircom.png
 			<p>対応携帯について詳しくは、販売員などにお問い合わせください。</p>
 		</dev>
 			<ons-button modifier="quiet"  class="op_index">
-			<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width=80% alt="機器の操作に戻る">
+        	<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width="80%" alt="機器の操作に戻る">
 			</ons-button>
 		</ons-page>
 	</ons-template>
@@ -889,14 +882,14 @@ operation-aircom.png
  説明 -->
   <ons-template id="petffood_explanation.html">
 		  <div class="center" id="toolbar-title">  <h1>自動給餌器</h1></div>
-    	<section style="padding-left: 0%;;height: 60%;top: 50%;">
+        <section style="padding-left: 0%;height: 65%;top: 45%;">
 				<div class="opration_view" style="margin: 0 auto;">
 				<img src="./images/op_home.png" class="photo eq_home" style="margin: 0 auto;" >
 				<img src="./images/operation-kyuji.png" class="eq_frame blink_anime" style="top: 0px;">
 				</div>
 		</section>
 
-        <section style="padding-left: 0%;height: 120px" class="center" >
+        <section style="padding-left: 0%;height: 260px" class="center" >
 				<div class="eq_desc center">
 				<p>自動給餌器を操作できます。</p>
 				</div>
@@ -906,27 +899,26 @@ operation-aircom.png
 	自動給餌器 操作
 	 -->
 	<ons-template id="petffood_control.html">
-
 	   <ons-page>
-		<p></p>
 		  <div class="center" id="toolbar-title">  <h1>自動給餌器</h1></div>
-		<section style="padding-left: 15%;padding-top: 6%">
+		    <section style="padding-left: 15%;padding-top: 6%">
 			<ons-row align="center">
 				<ons-col>
 					<ons-button id="pet_feeder"  >
-					<img border="0" src="./images/pet_feeder_button.png"  class="btn_tap_anim" width=80% alt="エサを与える">
+					<img border="0" src="./images/pet_feeder_button.png"  class="btn_tap_anim" width=75% alt="エサを与える">
 					</ons-button>
 				</ons-col>
 			</ons-row>
 			<p></p>
 			</ons-row>
-			</section>
+    		<p></p>
+            </section>
 		<dev class="notice"  >
 			<p>画面はイメージであり、実際のものとは異なる場合があります。</p>
 			<p>対応携帯について詳しくは、販売員などにお問い合わせください。</p>
 		</dev>
 			<ons-button modifier="quiet"  class="op_index">
-			<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width=80% alt="機器の操作に戻る">
+        	<img border="0" src="./images/eq_index_back_button.png" class="btn_tap_anim"  width="80%" alt="機器の操作に戻る">
 			</ons-button>
 		</ons-page>
 	</ons-template>
