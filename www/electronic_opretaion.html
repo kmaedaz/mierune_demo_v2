@@ -59,7 +59,7 @@
 
 
 
-	/*  テレビ */
+    /*  テレビ */
 	#tv_power_base{
 	    position: relative;
 	}
@@ -68,6 +68,7 @@
         position: absolute;
         top: 88px;
         Left: -16px;
+        width:98%;
     }
     
     #tv_ch_base {
@@ -83,9 +84,9 @@
     
     #tv_ch_down {
         position: absolute;
-        top: 242px;
+        top: 246px;
         Left: -24px;
-    }
+        }
     
 	</style>
 
@@ -141,9 +142,9 @@
 		$(document).on('click','#light_op',function(e) {
 			setTimeout(	function (){
 				myNavigator.resetToPage("light_explanation.html",{ animation: "lift" });
-					setTimeout(	function (){
-					myNavigator.resetToPage("light_control.html");
-					} , NEXTPAGE_TIME);
+					//setTimeout(	function (){
+					//myNavigator.resetToPage("light_control.html");
+					//} , NEXTPAGE_TIME);
 			} , OP_TIME);
 
 			console.log("light_op");
@@ -244,15 +245,19 @@
 		//イベント
 		$(document).on('click','#light_bright',function(e) {
 //			sendIRkit_command("LAMP_UP");
-    		sendIRkit_command("LIGHT_WARMCOLOR");
+//    		sendIRkit_command("LIGHT_WARMCOLOR");
+        	sendIRkit_command("STAGING_LIGHT_ON"); //test
             console.log("light_bright");
 		});
 
 		//イベント
 		$(document).on('click','#light_reduce',function(e) {
-			sendIRkit_command("LAMP_DOWN");
-			console.log("light_bright");
-		});
+//			sendIRkit_command("LAMP_DOWN");
+    		sendIRkit_command("STAGING_LIGHT_OFF"); //test
+
+            console.log("light_bright");
+
+        });
 
 		//イベント
 		$(document).on('click','#light_night',function(e) {
@@ -465,7 +470,7 @@
 			<img src="./images/operation-shomei.png" class="eq_frame blink_anime" style="top: 0px;">
 			</div>
 	</section>
-        <section style="padding-left: 0%;height: 260px" class="center" >
+    <section style="padding-left: 0%;height: 210px" class="center" >
 			<div class="eq_desc center">
 			<p>照明を操作できます。</p>
 			</div>
@@ -545,7 +550,7 @@
 				</div>
 		</section>
 
-        <section style="padding-left: 0%;height: 260px" class="center" >
+        <section style="padding-left: 0%;height: 210px" class="center" >
 				<div class="eq_desc center">
 				<p>エアコンを操作できます。</p>
 				</div>
@@ -614,7 +619,7 @@
 				</div>
 		</section>
 
-        <section style="padding-left: 0%;height: 260px" class="center" >
+        <section style="padding-left: 0%;height: 210px" class="center" >
 				<div class="eq_desc center">
 				<p>テレビを操作できます。</p>
 				</div>
@@ -646,11 +651,11 @@
 
 						<!-- チャンネル -->
 						<ons-button id="tv_ch_up"  >
-						<img border="0" src="./images/tv_ch_up_button.png"  class="btn_tap_anim" width=85% alt="TVCHUP">
+						<img border="0" src="./images/tv_ch_up_button.png"  class="btn_tap_anim" width=80% alt="TVCHUP">
 						</ons-button>
 
 						<ons-button id="tv_ch_down"  >
-						<img border="0" src="./images/tv_ch_down_button.png"  class="btn_tap_anim" width=85% alt="TVCHdown">
+						<img border="0" src="./images/tv_ch_down_button.png"  class="btn_tap_anim" width=80% alt="TVCHdown">
 						</ons-button>
 					</div>
 				</ons-col>
@@ -688,7 +693,7 @@
 				</div>
 		</section>
 
-        <section style="padding-left: 0%;height: 260px" class="center" >
+        <section style="padding-left: 0%;height: 210px" class="center" >
 				<div class="eq_desc center">
 				<p>オーディオを操作できます。</p>
 				</div>
@@ -768,7 +773,7 @@
 				</div>
 		</section>
 
-        <section style="padding-left: 0%;height: 260px" class="center" >
+        <section style="padding-left: 0%;height: 210px" class="center" >
 				<div class="eq_desc center">
 				<p>加湿空気清浄機を操作できます。</p>
 				</div>
@@ -830,7 +835,7 @@
 				</div>
 		</section>
 
-        <section style="padding-left: 0%;height: 260px" class="center" >
+     <section style="padding-left: 0%;height: 210px" class="center" >
 				<div class="eq_desc center">
 				<p>カーテンを操作できます。</p>
 				</div>
@@ -843,8 +848,8 @@
 	<ons-template id="curtain_control.html">
 	   <ons-page>
 		  <div class="center" id="toolbar-title">  <h1>カーテン</h1></div>
-		<section style="padding-left: 20%;padding-top: 2%">
-			<ons-row align="center">
+		<section style="padding-left: 20%;padding-top: 5%;padding-bottom:6%">
+			<ons-row align="center"> 
 				<ons-col>
 					<ons-button id="curtain_open"  >
 					<img border="0" src="./images/curtain_open_button.png"  class="btn_tap_anim" width=80% alt="カーテン開ける">
@@ -889,7 +894,7 @@
 				</div>
 		</section>
 
-        <section style="padding-left: 0%;height: 260px" class="center" >
+        <section style="padding-left: 0%;height: 210px" class="center" >
 				<div class="eq_desc center">
 				<p>自動給餌器を操作できます。</p>
 				</div>
@@ -901,7 +906,7 @@
 	<ons-template id="petffood_control.html">
 	   <ons-page>
 		  <div class="center" id="toolbar-title">  <h1>自動給餌器</h1></div>
-		    <section style="padding-left: 15%;padding-top: 6%">
+		    <section style="padding-left: 15%;padding-top: 6%;;padding-bottom:6%">
 			<ons-row align="center">
 				<ons-col>
 					<ons-button id="pet_feeder"  >

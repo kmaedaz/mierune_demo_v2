@@ -90,7 +90,6 @@ function scenario_play(scenario_arr){
 
 // シナリオ実行
 function scenario_exec(val){
-	const max_command =40;
     var tmp= localStorage.getItem(val);
     var param;
     var param1;
