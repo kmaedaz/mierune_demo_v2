@@ -60,7 +60,7 @@
 
 
     /*  テレビ */
-	#tv_power_base{
+    #tv_power_base{
 	    position: relative;
 	}
 
@@ -142,9 +142,9 @@
 		$(document).on('click','#light_op',function(e) {
 			setTimeout(	function (){
 				myNavigator.resetToPage("light_explanation.html",{ animation: "lift" });
-					//setTimeout(	function (){
-					//myNavigator.resetToPage("light_control.html");
-					//} , NEXTPAGE_TIME);
+					setTimeout(	function (){
+					myNavigator.resetToPage("light_control.html");
+					} , NEXTPAGE_TIME);
 			} , OP_TIME);
 
 			console.log("light_op");
@@ -275,7 +275,15 @@
 		 エアコン
 		*/
 
-		//エアコンON
+
+    	//エアコンON
+		$(document).on('click','#aircon_power',function(e) {
+			sendIRkit_command("AIRCON_POWER");
+            
+			console.log("aircon_power");
+		});
+
+        //エアコンON
 		$(document).on('click','#aricon_on',function(e) {
 			sendIRkit_command("AIRCON_ON");
             
@@ -470,7 +478,7 @@
 			<img src="./images/operation-shomei.png" class="eq_frame blink_anime" style="top: 0px;">
 			</div>
 	</section>
-    <section style="padding-left: 0%;height: 210px" class="center" >
+    <section style="padding-left: 0%;height: 200px" class="center" >
 			<div class="eq_desc center">
 			<p>照明を操作できます。</p>
 			</div>
@@ -550,7 +558,7 @@
 				</div>
 		</section>
 
-        <section style="padding-left: 0%;height: 210px" class="center" >
+     <section style="padding-left: 0%;height: 200px" class="center" >
 				<div class="eq_desc center">
 				<p>エアコンを操作できます。</p>
 				</div>
@@ -563,6 +571,16 @@
 		  <div class="center" id="toolbar-title">  <h1>エアコン</h1></div>
 		<section style="padding-left: 3%;padding-top:4px ">
 			<ons-row align="center">
+    		<ons-row align="center" style="padding-bottom:5%;">
+
+				<ons-col style="padding-left:8%;">
+					<ons-button id="aircon_power"  >
+					<img border="0" src="./images/aircon_power_button.png"  class="btn_tap_anim"  alt="エアコンON">
+					</ons-button>
+				</ons-col>
+
+
+			<!--
 				<ons-col>
 					<ons-button id="aricon_on"  >
 					<img border="0" src="./images/aricon_button_on.png"  class="btn_tap_anim"  alt="エアコンON">
@@ -573,6 +591,8 @@
 					<img border="0" src="./images/aricon_button_off.png"  class="btn_tap_anim"  alt="エアコンOFF">
 					</ons-button>
 				</ons-col>
+			-->
+
 			</ons-row>
 			<ons-row align="center">
 				<ons-col style="width:80%";>
@@ -619,7 +639,7 @@
 				</div>
 		</section>
 
-        <section style="padding-left: 0%;height: 210px" class="center" >
+     <section style="padding-left: 0%;height: 200px" class="center" >
 				<div class="eq_desc center">
 				<p>テレビを操作できます。</p>
 				</div>
@@ -693,7 +713,7 @@
 				</div>
 		</section>
 
-        <section style="padding-left: 0%;height: 210px" class="center" >
+    <section style="padding-left: 0%;height: 200px" class="center" >
 				<div class="eq_desc center">
 				<p>オーディオを操作できます。</p>
 				</div>
@@ -773,7 +793,7 @@
 				</div>
 		</section>
 
-        <section style="padding-left: 0%;height: 210px" class="center" >
+       <section style="padding-left: 0%;height: 200px" class="center" >
 				<div class="eq_desc center">
 				<p>加湿空気清浄機を操作できます。</p>
 				</div>
@@ -835,7 +855,7 @@
 				</div>
 		</section>
 
-     <section style="padding-left: 0%;height: 210px" class="center" >
+    <section style="padding-left: 0%;height: 200px" class="center" >
 				<div class="eq_desc center">
 				<p>カーテンを操作できます。</p>
 				</div>
@@ -894,7 +914,7 @@
 				</div>
 		</section>
 
-        <section style="padding-left: 0%;height: 210px" class="center" >
+       <section style="padding-left: 0%;height: 200px" class="center" >
 				<div class="eq_desc center">
 				<p>自動給餌器を操作できます。</p>
 				</div>

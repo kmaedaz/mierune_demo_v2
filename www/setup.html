@@ -21,6 +21,11 @@
     <script src="./js/irkit.js"></script>1
 
     <script src="./js/ncmb.min.js"></script>1
+    <style>
+	.command_test	{
+		font-size:1.8em;
+	}
+	</style>
 
   <script>
     ons.ready(function() {
@@ -28,7 +33,82 @@
 
       //var irkit= new IrKitParam();
       //      console.log(irkit);
-    	//IRKIT IP
+	  // すでにある要素を削除する
+	  var list = $("#list");
+	  list.children().remove();
+	  // ローカルストレージに保存された値すべてを要素に追加する
+	  var key, value, html = [];
+	  var str ="" ;
+	  for(var i=0, len=localStorage.length; i<len; i++) {
+	    key = localStorage.key(i);
+
+		if(!(key.indexOf("SCEN")>=0 || key.indexOf("IRK")>=0 || key.indexOf("IP")>=0 || key.indexOf("CLIE")>=0) ){
+		    value = localStorage.getItem(key);
+		    var param;
+		    try {
+		        param=  JSON.parse(value);
+			    console.log(value);
+		        console.error("OK");
+
+				str  = str+  "<div data-command=\"" + key + "\" title=\""  +   escape(param.PARAM)+     "\"  >";
+
+				str  = str+ "<p><button class=\"IR_COMMAND\"" + "data-command=\"" + key + "\"  style=\"font-size:1.8em\"  >";
+			    str  = str + param.NAME + ":(" + key +")";	
+
+				str  = str +"</button></p>";
+				str  = str +"</div>";
+
+
+		        } catch (e) {
+			        console.error("erro");
+		        }
+
+		} else{
+			        console.log("e:"+key);
+		}
+
+	  }
+    list.html(str); 
+
+	//テストコマンド
+    	$(document).on('click','.IR_COMMAND',function(e) {
+		 console.log( $(this).attr('data-command') );
+		var n= $(this).attr('data-command');
+		if(n.indexOf("_DOUBLE_")>=0 ) {
+	  		 sendIRkit_dbl_command(n);
+			} else {
+	  		 sendIRkit_command(n);
+			}			
+
+        });
+
+
+
+	//
+	
+    	$(document).on('click','#DATA_CLEAR',function(e) {
+		  // データクリア
+		localStorage.clear();
+		 alert("全データをクリア");
+        $("#IRKit1").val("");
+        $("#IRKit2").val("");
+        console.log("AllClear");
+        });
+
+
+
+/*
+  var outer = document.getElementById('hoge');
+  
+  var btn1 = document.createElement('ons-button');
+  btn1.innerHTML = 'without compile()';
+  outer.appendChild(btn1);
+  
+  var btn2 = document.createElement('ons-button');
+  btn2.innerHTML = 'with compile()';
+  outer.appendChild(btn2);
+*/
+	 	//IRKIT IP
 		$("#IRKit1").val(getIRkit_IP("1"));
 		$("#IRKit2").val(getIRkit_IP("2"));
 
@@ -126,7 +206,7 @@
 
 <div style="text-align: center">
      <p>
-			赤外線データをクラウドからダウンロードする
+			赤外線データをクラウドからダウンロードする(※インターネット接続ができること)
      </p>
     <p><ons-button id="DATA_UPDATE"><img border="0" src="./images/data_update_button.png"  class="btn_tap_anim" width=90% alt="IPアドレス更新"></ons-button></p>
     <div id="my-param"></div>
@@ -151,9 +231,9 @@
 
 <div style="text-align: center">
      <p>
-			データを初期化します
+			全データを初期化します
      </p>
-    <p><ons-button id="DATA_CLEAR"><img border="0" src="./images/all_clear_button.png"  class="btn_tap_anim" width=90% alt="全データクリア"></ons-button></p>
+    <p><ons-button id="DATA_CLEAR"><img border="0" src="./images/all_clear_button.png"  class="btn_tap_anim" width=80% alt="全データクリア"></ons-button></p>
     
 </div> 
 
@@ -166,16 +246,30 @@
 
 
 <div style="text-align: center">
-
-	<ons-button modifier="quiet" style="width:45%">
-		<ons-button onclick="window.location.href='index.html';" >
-		 <img border="0" src="./images/m_button_topback.png"  class="btn_tap_anim" width=90% alt="TOPに戻る">
-		</ons-button>
+	<ons-button onclick="window.location.href='index.html';" >
+	 <img border="0" src="./images/m_button_topback.png"  class="btn_tap_anim" width=95% alt="TOPに戻る">
 	</ons-button>
 
 </div> 
 
+<p>
+</p>
+<p>
+</p>
 
+<p>
+<hr>
+</p>
+<h1>コマンド送信テスト </h2>
+<sectionstyle="text-align: center">
+	<h2 >
+	<div id="list" >
+	</div> 
+	<h2>
+
+<section>
+
+<hr>
 
  
  
