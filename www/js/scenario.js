@@ -4,7 +4,7 @@
 function scenario_play(scenario_arr){
     console.log(scenario_arr);
     if(!scenario_arr || scenario_arr== undefined){
-		return false;	
+    	return false;	
 	}
 
     var com_tmp = scenario_arr.shift();

@@ -90,7 +90,7 @@ function sendIRkit_command(val) {
     var irkit =param.IRKIT;//IrKit
     var param =param.PARAM;//赤外線データ
     if(param == null){
-	    console.error("Not found parameter");
+        console.error("Not found parameter");
 		return false;
 	}
 
@@ -158,6 +158,18 @@ function sendIRkit_dbl_command(val,n) {
     setTimeout(    function (){
          sendIRkit_command(val);
     } , n); 
+
+}
+
+
+// 初期化
+//  
+function sendIRkit_init_command() {
+    console.log("sendIRkit_init_command");
+    sendIRkit_command("AUDIO_ACONOFF");
+    setTimeout(    function (){
+         sendIRkit_command("TV_ACONOFF");
+    } , 300); 
 
 }
 

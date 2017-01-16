@@ -29,7 +29,7 @@
 <style>
 
     #aircon_panel{
-	    position: relative;
+        position: relative;
 	    width:80%;
     }
 
@@ -93,12 +93,16 @@
 
   <script>
     var opration_flag =  false; //操作されたかチェック
-
+	var scenario_post_str ;
     	function  opration_check(myNavigator) {
 			 if(!opration_flag){
 				console.log("index");
+    			console.log("scenario_post_str:" +scenario_post_str);
+
+                scenario_exec(scenario_post_str);
 				// 家電機器初期設定
-				myNavigator.resetToPage("exp_index.html");
+                sendIRkit_init_command();
+                myNavigator.resetToPage("exp_index.html");
 			 } else{
 				console.log("index");
 			 }
@@ -120,25 +124,20 @@
     ons.ready(function() {
 		console.log("Onsen UI is ready!");
 		//
-		const OP_TIME = 1000; //操作画面への遷移
+		const OP_TIME = 1300; //操作画面への遷移
 		const NEXTPAGE_TIME = 3000; //操作画面への遷移
 		const DEFAULT_TEMPERATURE=26;// 初期温度
-    	const NO_OPRATIN_TIME = 30000; //何もしなければ操作画面への遷移
+    	const NO_OPRATIN_TIME = 31000; //何もしなければ操作画面への遷移
+		const RETURN_HOME_LATTER_HALF =1600 ;//･帰宅後半の動画開始
 
         setBtnAnim();	
-		//var irkit= new IrKitParam();
-		// console.log(irkit);
-		//	照明ボタンをタップ1秒後に画面表示、対象家電が点滅
-		//	3秒後に操作画面
-		//setTimeout(	function (){
-		//		myNavigator.resetToPage("light_control.html");
-		//	} , NEXTPAGE_TIME);
+
 		/*
 			イベントハンドラー
 		*/
     	// 一定期間操作がなければ　機器操作index
     	
-		//setInterval("opration_check(myNavigator)",NO_OPRATIN_TIME); //
+		setInterval("opration_check(myNavigator)",NO_OPRATIN_TIME); //
     	//  すべて
 
 
@@ -147,12 +146,14 @@
 		});
 
 
+        sendIRkit_init_command();
 
         /*
 		// begin 機器操作インデックス
 		*/
 		$(document).on('click','#scene_detail_heatstroke',function(e) {
 			setTimeout(	function (){
+					scenario_post_str ="SCENARIO_POST_HEATPROTECT";
                     scenario_exec("SCENARIO_HEATPROTECT");
                     myNavigator.resetToPage("scene_detail_heatstroke.html");  //熱中症予防
 			} , OP_TIME);
@@ -162,6 +163,7 @@
 
 		$(document).on('click','#scene_detail_crime',function(e) {
 			setTimeout(	function (){
+				scenario_post_str ="SCENARIO_POST_CRIMEDEFEND";
 				myNavigator.resetToPage("scene_detail_crime.html");  //防犯
                  scenario_exec("SCENARIO_CRIMEDEFEND");
 			} , OP_TIME);
@@ -171,6 +173,7 @@
 		//起床
 		$(document).on('click','#scene_detail_wakeup',function(e) {
 			setTimeout(	function (){
+				scenario_post_str ="SCENARIO_POST_WAKEUP";
 				myNavigator.resetToPage("scene_detail_wakup.html");  //起床
                  scenario_exec("SCENARIO_WAKEUP");
 	
@@ -180,7 +183,8 @@
 
 		//外出
 		$(document).on('click','#scene_detail_outing',function(e) {
-			setTimeout(	function (){
+				scenario_post_str ="SCENARIO_POST_OUTING";
+				setTimeout(	function (){
 				myNavigator.resetToPage("scene_detail_outing.html");  //外出
                  scenario_exec("SCENARIO_OUTING");
 	
@@ -191,16 +195,13 @@
 
 		//帰宅
 		$(document).on('click','#scene_detail_return',function(e) {
-
             setTimeout(	function (){
+				scenario_post_str ="SCENARIO_POST_RETURNING";
 				myNavigator.resetToPage("scene_detail_return_a.html");  //帰宅前半
                  scenario_exec("SCENARIO_RETURNING",myNavigator);
-
                     setTimeout(    function (){
         				myNavigator.resetToPage("scene_detail_return_b.html", {animation: 'fade'});  //帰宅後半B
-                    } , 16000);
-
-
+                    } , RETURN_HOME_LATTER_HALF);
 
             } , OP_TIME);
 			console.log("scene_detail_outing");
@@ -216,7 +217,8 @@
 
 		//シナリオインデクス
 		$(document).on('click','.exp_index',function(e) {
-			console.log("exp_index");
+            sendIRkit_init_command();
+            console.log("exp_index");
 			myNavigator.resetToPage("exp_index.html");
 		});
 
@@ -239,11 +241,13 @@
  -->
   <ons-template id="exp_index.html">
 
-  <p></p>
       <div class="center" id="toolbar-title">  <h1>シナリオ機能</h1></div>
 
-   <h2>体感したいシナリオをタップしてください。</h2>
-
+    <div class="center" >
+     <h2>体感したいシナリオをタップしてください。</h2>
+    </div>
+    
+    
 
 
 <section style="padding-left: 10%">

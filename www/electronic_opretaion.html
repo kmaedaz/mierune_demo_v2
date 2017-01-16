@@ -61,7 +61,7 @@
 
     /*  テレビ */
     #tv_power_base{
-	    position: relative;
+        position: relative;
 	}
 
     #tv_power {
@@ -97,7 +97,8 @@
 			 if(!opration_flag){
 				console.log("index");
 				// 家電機器初期設定
-				myNavigator.resetToPage("op_index.html");
+                sendIRkit_init_command();
+                myNavigator.resetToPage("op_index.html");
 			 } else{
 				console.log("index");
 			 }
@@ -118,7 +119,7 @@
 		
 		// 一定期間操作がなければ　機器操作index
     	
-		//setInterval("opration_check(myNavigator)",NO_OPRATIN_TIME); //
+		setInterval("opration_check(myNavigator)",NO_OPRATIN_TIME); //
 
 
 		 // clearInterval(opration_check);
@@ -126,6 +127,8 @@
 		setBtnAnim();	
 		//var irkit= new IrKitParam();
 		// console.log(irkit);
+        sendIRkit_init_command();
+
 
 		/*
 			イベントハンドラー
@@ -250,16 +253,13 @@
             console.log("light_bright");
 		});
 
-		//イベント
+		//イベント 減灯
 		$(document).on('click','#light_reduce',function(e) {
-//			sendIRkit_command("LAMP_DOWN");
-    		sendIRkit_command("STAGING_LIGHT_OFF"); //test
-
-            console.log("light_bright");
-
+    		sendIRkit_command("LAMP_REDUCE"); //test
+            console.log("light_reduce");
         });
 
-		//イベント
+		//イベント常夜灯
 		$(document).on('click','#light_night',function(e) {
 			sendIRkit_command("LAMP_ON");
 			console.log("light_night");
@@ -406,7 +406,8 @@
 		//機器操作インデクス
 		$(document).on('click','.op_index',function(e) {
 			console.log("op_index");
-			myNavigator.resetToPage("op_index.html");
+            sendIRkit_init_command();
+            myNavigator.resetToPage("op_index.html");
 		});
 
 
@@ -427,7 +428,6 @@
 	 機器の操作インデクス 
  -->
   <ons-template id="op_index.html">
-	<p></p>
 	<div class="center" id="toolbar-title">  <h1>機器の操作</h1></div>
 
 	<section style="padding-left: 10%;padding-top:2%;">
