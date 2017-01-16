@@ -8,6 +8,6 @@
 	/* タップ時のCSSアニメーション設定 */
 	.btn_tap_anim_on {
 		-webkit-transition: 120ms;
-		-webkit-transform: scale(0.97);
+		-webkit-transform: scale(0.96);
 	}
 	

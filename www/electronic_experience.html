@@ -109,6 +109,18 @@
 			 opration_flag=false;
 		}
 
+
+        var rep_hits_flag =  false; //連打防止
+
+    	function  hits_flag() {
+			rep_hits_flag= true;
+		    setTimeout( function (){
+				console.log("disabled");
+				hits_flag =false ;
+		    } , 1000); 			
+		}
+
+
     (function ($) {
         $('#returnhomea').on('show', function(){
             this.play();

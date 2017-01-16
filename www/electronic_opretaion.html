@@ -62,7 +62,7 @@
     /*  テレビ */
     #tv_power_base{
         position: relative;
-	}
+    }
 
     #tv_power {
         position: absolute;
@@ -129,6 +129,15 @@
 		// console.log(irkit);
         sendIRkit_init_command();
 
+        var rep_hits_flag =  false; //操作されたかチェック
+
+    	function  hits_flag() {
+			rep_hits_flag= true;
+		    setTimeout( function (){
+				console.log("kye enabled");
+				rep_hits_flag =false ;
+		    } , 1000); 			
+		}
 
 		/*
 			イベントハンドラー
@@ -233,6 +242,11 @@
 		*/
 		//イベントハンドら
 		$(document).on('click','#light_all_off',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+		 hits_flag();
 			sendIRkit_command("LIGHT_OFF");
 //			sendIRkit_command("TEST");
 
@@ -241,12 +255,22 @@
 
 		//イベントハンドら
 		$(document).on('click','#light_all_on',function(e) {
+		if(rep_hits_flag){
+			console.log("連打禁止");
+			return ;
+		}
+		 hits_flag();
 			sendIRkit_command("LIGHT_ON");
 			console.log("ight_all_on");
 		});
 
 		//イベント
 		$(document).on('click','#light_bright',function(e) {
+		if(rep_hits_flag){
+			console.log("連打禁止");
+			return ;
+		}
+		 hits_flag();
 //			sendIRkit_command("LAMP_UP");
 //    		sendIRkit_command("LIGHT_WARMCOLOR");
         	sendIRkit_command("STAGING_LIGHT_ON"); //test
@@ -255,18 +279,33 @@
 
 		//イベント 減灯
 		$(document).on('click','#light_reduce',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
     		sendIRkit_command("LAMP_REDUCE"); //test
             console.log("light_reduce");
         });
 
 		//イベント常夜灯
 		$(document).on('click','#light_night',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			sendIRkit_command("LAMP_ON");
 			console.log("light_night");
 		});
 
 		//イベント
 		$(document).on('click','#light_dark',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			sendIRkit_command("");
 			console.log("light_dark");
 		});
@@ -278,6 +317,12 @@
 
     	//エアコンON
 		$(document).on('click','#aircon_power',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
+
 			sendIRkit_command("AIRCON_POWER");
             
 			console.log("aircon_power");
@@ -285,6 +330,11 @@
 
         //エアコンON
 		$(document).on('click','#aricon_on',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			sendIRkit_command("AIRCON_ON");
             
 			console.log("aricon_on");
@@ -292,12 +342,23 @@
 
 		//エアコンOFF
 		$(document).on('click','#aricon_off',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
+
 			sendIRkit_command("AIRCON_ON");
 			console.log("aricon_off");
 		});
 
 		//エアコン温度UP
 		$(document).on('click','#aircon_up',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			if(temperature_value<30){
 				sendIRkit_command("AIRCON_UP");
 				temperature_value++;
@@ -310,6 +371,11 @@
 
 		//エアコン_down
 		$(document).on('click','#aircon_down',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			if(temperature_value>18){
 				sendIRkit_command("AIRCON_DOWN");
 				temperature_value--;
@@ -320,83 +386,160 @@
 
 		//TV
 		$(document).on('click','#tv_power',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
+
 			sendIRkit_command("TV_ON");
             //sendIRkit_dbl_command("TV_ON",2000);
 			console.log("tv_power");
 		});
 
 		$(document).on('click','#tv_ch_up',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			sendIRkit_command("TV_CH_UP");
 			console.log("tv_ch_up");
 		});
 
 		$(document).on('click','#tv_ch_down',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			sendIRkit_command("TV_CH_DOWN");
 			console.log("tv_ch_down");
 		});
 
 		$(document).on('click','#tv_chidegi',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			sendIRkit_command("TV_CHIDEGI");
 			console.log("tv_chidegi");
 		});
 
 		$(document).on('click','#tv_bs',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			sendIRkit_command("TV_BS");
 			console.log("tv_bs");
 		});
 
 		//オーディオ
 		$(document).on('click','#audio_power',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
+
 			sendIRkit_command("AUDIO_ON");
 			console.log("audio_power");
 		});
 
 
 		$(document).on('click','#audio_play',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			sendIRkit_command("AUDIO_PLAY");
 			console.log("audio_play");
 		});
 
 		$(document).on('click','#audio_stop',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			sendIRkit_command("AUDIO_STOP");
 			console.log("audio_stop");
 		});
 
 		$(document).on('click','#audio_ffskip',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			sendIRkit_command("AUDIO_FFSKIP");
 			console.log("audio_ffskip");
 		});
 
 
 		$(document).on('click','#audio_revskip',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			sendIRkit_command("AUDIO_REVSKIP");
 			console.log("audio_revskip");
 		});
 
 		// 加湿空気清浄機
 		$(document).on('click','#purifier_on',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			sendIRkit_command("PURIFER_ON");
 			console.log("purifier_on");
 		});
 
 		$(document).on('click','#purifier_off',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			sendIRkit_command("PURIFER_OFF");
 			console.log("purifier_off");
 		});
 
 		// カーテン
 		$(document).on('click','#curtain_open',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			sendIRkit_dbl_command("CURTAIN_OPEN",2000);
 			console.log("curtain_open");
 		});
 
 		$(document).on('click','#curtain_close',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			sendIRkit_dbl_command("CURTAIN_CLOSE",2000);
 			console.log("curtain_close");
 		});
 
 		// pet food 
 		$(document).on('click','#pet_feeder',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			sendIRkit_command("PET_FEEDER_PLAY");
 			console.log("pet_feeder");
 		});
@@ -405,6 +548,11 @@
 
 		//機器操作インデクス
 		$(document).on('click','.op_index',function(e) {
+			if(rep_hits_flag){
+				console.log("連打禁止");
+				return ;
+			}
+			 hits_flag();
 			console.log("op_index");
             sendIRkit_init_command();
             myNavigator.resetToPage("op_index.html");
