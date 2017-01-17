@@ -30,10 +30,10 @@
 
     #aircon_panel{
         position: relative;
-	    width:80%;
+        width:80%;
     }
 
-	#aircon_base{
+    #aircon_base{
         position: relative;
 	}
 
@@ -139,8 +139,8 @@
 		const OP_TIME = 1300; //操作画面への遷移
 		const NEXTPAGE_TIME = 3000; //操作画面への遷移
 		const DEFAULT_TEMPERATURE=26;// 初期温度
-    	const NO_OPRATIN_TIME = 31000; //何もしなければ操作画面への遷移
-		const RETURN_HOME_LATTER_HALF =1600 ;//･帰宅後半の動画開始
+    	const NO_OPRATIN_TIME = 38000; //何もしなければ操作画面への遷移
+		const RETURN_HOME_LATTER_HALF =12000 ;//･帰宅後半の動画開始
 
         setBtnAnim();	
 
@@ -151,7 +151,7 @@
     	
 		setInterval("opration_check(myNavigator)",NO_OPRATIN_TIME); //
     	//  すべて
-
+        scenario_exec("SCENARIO_ALLT_RESET");
 
         $(document).on('click',function(e) {
 		 opration_flag=true;
@@ -199,7 +199,7 @@
 				setTimeout(	function (){
 				myNavigator.resetToPage("scene_detail_outing.html");  //外出
                  scenario_exec("SCENARIO_OUTING");
-	
+
 			} , OP_TIME);
 			console.log("scene_detail_outing");
 		});
@@ -219,17 +219,14 @@
 			console.log("scene_detail_outing");
 		});
 
-
-
 		/*
 		// end 機器操作インデックス
 		*/
 
-
-
 		//シナリオインデクス
 		$(document).on('click','.exp_index',function(e) {
             sendIRkit_init_command();
+             scenario_exec(scenario_post_str);
             console.log("exp_index");
 			myNavigator.resetToPage("exp_index.html");
 		});
@@ -316,12 +313,7 @@
                     <video src="./movie/heatstroke_161227.mp4" autoplay  preload="none" class="movie_field" width="85%"> </video>
                     <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
                     <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
-                	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
                 	<img src="./images/scenario-cur.png" class="scene_frame blink_anime small_view scenario-cur" >
-                    <img src="./images/scenario-kasitu.png" class="scene_frame blink_anime small_view scenario-kasitu" >
-                    <img src="./images/scenario-shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
-                    <img src="./images/scenario-tv.png"  class="scene_frame blink_anime small_view scenario-tv" >
-                    <img src="./images/scenario-kyuji.png" class="scene_frame blink_anime small_view scenario-kyuji" >
                 </div>
 
 			<div class="exp_desc">
@@ -349,13 +341,8 @@
             <div class="scene_view" >
                 <video src="./movie/crime_161227.mp4" autoplay preload="none" class="movie_field" width="85%"> </video>
                 <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
-    	         <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
-            	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
             	<img src="./images/scenario-cur.png" class="scene_frame blink_anime small_view scenario-cur" >
-                <img src="./images/scenario-kasitu.png" class="scene_frame blink_anime small_view scenario-kasitu" >
                 <img src="./images/scenario-shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
-                <img src="./images/scenario-tv.png"  class="scene_frame blink_anime small_view scenario-tv" >
-                <img src="./images/scenario-kyuji.png" class="scene_frame blink_anime small_view scenario-kyuji" >
 			</div>
 
 			<div class="exp_desc">
@@ -384,13 +371,8 @@
             <div class="scene_view" >
                 <video src="./movie/wakeup_161227.mp4" autoplay class="movie_field" width="85%"> </video>
                 <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
-                <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
             	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
             	<img src="./images/scenario-cur.png" class="scene_frame blink_anime small_view scenario-cur" >
-                <img src="./images/scenario-kasitu.png" class="scene_frame blink_anime small_view scenario-kasitu" >
-                <img src="./images/scenario-shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
-                <img src="./images/scenario-tv.png"  class="scene_frame blink_anime small_view scenario-tv" >
-                <img src="./images/scenario-kyuji.png" class="scene_frame blink_anime small_view scenario-kyuji" >
 			</div>
 
 			<div class="exp_desc">
@@ -421,12 +403,7 @@
                 <video src="./movie/goout_161227.mp4" autoplay class="movie_field" width="85%"> </video>
                 <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
                 <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
-            	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
-            	<img src="./images/scenario-cur.png" class="scene_frame blink_anime small_view scenario-cur" >
-                <img src="./images/scenario-kasitu.png" class="scene_frame blink_anime small_view scenario-kasitu" >
                 <img src="./images/scenario-shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
-                <img src="./images/scenario-tv.png"  class="scene_frame blink_anime small_view scenario-tv" >
-                <img src="./images/scenario-kyuji.png" class="scene_frame blink_anime small_view scenario-kyuji" >
 			</div>
 
 			<div class="exp_desc">
@@ -458,12 +435,7 @@
                 <video src="./movie/returnhome_161227a.mp4" id="returnhomea" autoplay class="movie_field" width="85%" > </video>
                 <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
                 <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
-            	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
-            	<img src="./images/scenario-cur.png" class="scene_frame blink_anime small_view scenario-cur" >
-                <img src="./images/scenario-kasitu.png" class="scene_frame blink_anime small_view scenario-kasitu" >
                 <img src="./images/scenario-shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
-                <img src="./images/scenario-tv.png"  class="scene_frame blink_anime small_view scenario-tv" >
-                <img src="./images/scenario-kyuji.png" class="scene_frame blink_anime small_view scenario-kyuji" >
 			</div>
 
 			<div class="exp_desc">
@@ -494,12 +466,7 @@
                 <video src="./movie/returnhome_161227b.mp4" id="returnhomea" autoplay class="movie_field" width="85%"  > </video>
                 <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
                 <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
-            	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
-            	<img src="./images/scenario-cur.png" class="scene_frame blink_anime small_view scenario-cur" >
-                <img src="./images/scenario-kasitu.png" class="scene_frame blink_anime small_view scenario-kasitu" >
                 <img src="./images/scenario-shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
-                <img src="./images/scenario-tv.png"  class="scene_frame blink_anime small_view scenario-tv" >
-                <img src="./images/scenario-kyuji.png" class="scene_frame blink_anime small_view scenario-kyuji" >
 			</div>
 
 			<div class="exp_desc">

@@ -12,13 +12,13 @@
         "cordova-custom-config@2.0.3",
         "cordova-plugin-media@2.3.0"
     ],
-    "title-ja": "",
-    "title-en": "terst",
+    "title-ja": "ﾐﾙﾃﾞﾓ",
+    "title-en": "",
     "description-ja": "",
     "description-en": "",
     "category": "User Template",
     "platform": [
         "android"
     ],
-    "name": "generated-1484379460-585b8acc013eb04c4c01b334"
+    "name": "generated-1484642066-585b8acc013eb04c4c01b334"
 }

@@ -88,7 +88,7 @@
         Left: -24px;
         }
     
-	</style>
+    </style>
 
   <script>
 		var opration_flag =  false; //操作されたかチェック
@@ -264,7 +264,7 @@
 			console.log("ight_all_on");
 		});
 
-		//イベント
+		//イベント明るく
 		$(document).on('click','#light_bright',function(e) {
 		if(rep_hits_flag){
 			console.log("連打禁止");
@@ -578,38 +578,39 @@
   <ons-template id="op_index.html">
 	<div class="center" id="toolbar-title">  <h1>機器の操作</h1></div>
 
-	<section style="padding-left: 10%;padding-top:2%;">
-	<ons-button modifier="quiet" style="width:26%" id="light_op"  >
+	<section style="padding-left: 14%;padding-top:4%;">
+	<ons-button modifier="quiet" style="width:26%" id="light_op"  animation="zoom-in" >
 	  <img border="0" src="./images/m_button_light.png" class="btn_tap_anim"  width=75% alt="照明">
 	</ons-button>
 
-	<ons-button modifier="quiet" style="width:26%" id="aircon_op"> 
+	<ons-button modifier="quiet" style="width:26%" id="aircon_op" animation="zoom-in"> 
 	  <img border="0" src="./images/m_button_aircon.png" class="btn_tap_anim" width=75% alt="エアコン">
 	</ons-button>
 
 
-	<ons-button modifier="quiet" style="width:26%" id="tv_op">
+	<ons-button modifier="quiet" style="width:26%" id="tv_op" animation="zoom-in">
 	  <img border="0" src="./images/m_button_tv.png" class="btn_tap_anim" width=75% alt="テレビ">
 	</ons-button>
 
-	<ons-button modifier="quiet" style="width:26%" id="audio_op">
+	<ons-button modifier="quiet" style="width:26%" id="audio_op" animation="zoom-in">
 	  <img border="0" src="./images/m_button_audio.png" class="btn_tap_anim" width=75% alt="オーディオ">
 	</ons-button>
-	<ons-button modifier="quiet" style="width:26%" id="purifier_op">
+	<ons-button modifier="quiet" style="width:26%" id="purifier_op" animation="zoom-in">
 	  <img border="0" src="./images/m_button_purifier.png"  class="btn_tap_anim" width=75% alt="空気清浄機">
 	</ons-button>
 	    
-	<ons-button modifier="quiet" style="width:26%" id="curtain_op">
+	<ons-button modifier="quiet" style="width:26%" id="curtain_op" animation="zoom-in">
 	  <img border="0" src="./images/m_button_curtain.png"  class="btn_tap_anim" width=75% alt="カーテン">
 	</ons-button>
 
 
-	<ons-button modifier="quiet" style="width:26%" id="petfeeter_op">
+	<ons-button modifier="quiet" style="width:26%" id="petfeeter_op" animation="zoom-in">
 	  <img border="0" src="./images/m_button_servingfood.png"  class="btn_tap_anim"width=75% alt="自動餌">
 	</ons-button> 
 	</section>
-	<ons-button modifier="quiet" style="width:26%">
-		<ons-button onclick="window.location.href='index.html';" >
+    <p></p>
+    <ons-button modifier="quiet" style="width:26%">
+		<ons-button onclick="window.location.href='index.html';" animation="zoom-in" >
 		 <img border="0" src="./images/m_button_topback.png"  class="btn_tap_anim" width=75% alt="TOPに戻る">
 		</ons-button>
 	</ons-button>
@@ -628,7 +629,7 @@
 	</section>
     <section style="padding-left: 0%;height: 200px" class="center" >
 			<div class="eq_desc center">
-			<p>照明を操作できます。</p>
+			<p>　　　　照明を操作できます。</p>
 			</div>
 	</section>
 
@@ -708,7 +709,7 @@
 
      <section style="padding-left: 0%;height: 200px" class="center" >
 				<div class="eq_desc center">
-				<p>エアコンを操作できます。</p>
+				<p>　　　　エアコンを操作できます。</p>
 				</div>
 		</section>
   </ons-template>
@@ -718,7 +719,6 @@
 	   <ons-page>
 		  <div class="center" id="toolbar-title">  <h1>エアコン</h1></div>
 		<section style="padding-left: 3%;padding-top:4px ">
-			<ons-row align="center">
     		<ons-row align="center" style="padding-bottom:5%;">
 
 				<ons-col style="padding-left:8%;">
@@ -758,10 +758,6 @@
 							26C
 						</div>
 					</div>
-
-    			<ons-col>
-				</ons-col>
-
 				</ons-col>
 			</ons-row>
     	</section>
@@ -789,7 +785,7 @@
 
      <section style="padding-left: 0%;height: 200px" class="center" >
 				<div class="eq_desc center">
-				<p>テレビを操作できます。</p>
+				<p>　　　　テレビを操作できます。</p>
 				</div>
 		</section>
 
@@ -863,7 +859,7 @@
 
     <section style="padding-left: 0%;height: 200px" class="center" >
 				<div class="eq_desc center">
-				<p>オーディオを操作できます。</p>
+				<p>　　　　オーディオを操作できます。</p>
 				</div>
 		</section>
   </ons-template>
@@ -943,7 +939,7 @@
 
        <section style="padding-left: 0%;height: 200px" class="center" >
 				<div class="eq_desc center">
-				<p>加湿空気清浄機を操作できます。</p>
+				<p>　　　　加湿空気清浄機を操作できます。</p>
 				</div>
 		</section>
   </ons-template>
@@ -1005,7 +1001,7 @@
 
     <section style="padding-left: 0%;height: 200px" class="center" >
 				<div class="eq_desc center">
-				<p>カーテンを操作できます。</p>
+				<p>　　　　カーテンを操作できます。</p>
 				</div>
 		</section>
   </ons-template>
@@ -1064,7 +1060,7 @@
 
        <section style="padding-left: 0%;height: 200px" class="center" >
 				<div class="eq_desc center">
-				<p>自動給餌器を操作できます。</p>
+				<p>　　　　自動給餌器を操作できます。</p>
 				</div>
 		</section>
   </ons-template>
