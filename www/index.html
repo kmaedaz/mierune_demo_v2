@@ -28,8 +28,8 @@
   <script>
     ons.ready(function() {
         console.log("Onsen UI is ready!");
-		setBtnAnim();	
-		//var irkit= new IrKitParam();
+        setBtnAnim();    
+        //var irkit= new IrKitParam();
 		// console.log(irkit);
 		//var navigator = document.getElementById('Navigator')
 		//navigator.pushPage('page.html');
@@ -61,34 +61,26 @@
 
  <!-- index.html -->
   <ons-template id="index.html">
-			  <div class="center" id="toolbar-title">  <h1>家電の未来を体感しよう！</h1></div>
-
-			<p></p>
-			<p></p>
-	<section style="padding-left: 15%;padding-top:10%;">
-		<ons-button modifier="quiet" style="width:48%">
-			<ons-button onclick="window.location.href='electronic_opretaion.html';" >
-			 <img border="0" src="./images/l_button_electric.png"  class="btn_tap_anim" width=90% alt="機器の操作">
-			</ons-button>
-		</ons-button>
-
-		<ons-button modifier="quiet" style="width:48%">
-			<ons-button onclick="window.location.href='electronic_experience.html';" >
-		    <img border="0" src="./images/l_button_experience.png"  class="btn_tap_anim" width=90% alt="シナリオ操作">
-			</ons-button>
-		</ons-button>
-	<p></p>
-	<p></p>
-	<p></p>
-	<p></p>
+	<div style="position: relative;margin: 0px; padding: 0px;width:100%;height: auto;">
+    <img border="0" src="./images/top_page.png"  style="top:0;left:0;width:100%;">
+			<a  href="electronic_opretaion.html" >
+			 <img border="0" src="./images/l_button_electric.png"  class="btn_tap_anim"   style="position: absolute;left:98px;top:193px;width:512px" alt="機器の操作">
+			</a>
+			<a  href="electronic_experience.html" >
+ 		     <img border="0" src="./images/l_button_experience.png"  class="btn_tap_anim"   style="position: absolute;left:674px;top:193px;;width:512px" alt="シナリオ操作">
+			</a>
 	<p></p>
 	<p></p>
     <p></p>
-	    
-		<ons-button modifier="quiet" style="width:30%">
-		    <a href="setup.html" >setup</a>
-		</ons-button>
-	</section>
+	<p></p>
+    <p></p>
+	<p></p>
+    <p></p>
+	<p></p>
+    <p></p>
+    <p></p>
+    <a href="setup.html" >.</a>
+	</div>
   </ons-template>
 
 </body>

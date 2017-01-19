@@ -35,7 +35,7 @@
 
     #aircon_base{
         position: relative;
-	}
+    }
 
     
     
@@ -59,7 +59,7 @@
     }
     
 
-	//TV
+    //TV
 	#tv_power_base{
 	    position: relative;
 	}
@@ -166,9 +166,9 @@
 		$(document).on('click','#scene_detail_heatstroke',function(e) {
 			setTimeout(	function (){
 					scenario_post_str ="SCENARIO_POST_HEATPROTECT";
-                    scenario_exec("SCENARIO_HEATPROTECT");
                     myNavigator.resetToPage("scene_detail_heatstroke.html");  //熱中症予防
-			} , OP_TIME);
+                    scenario_exec("SCENARIO_HEATPROTECT");
+                    } , OP_TIME);
 			console.log("scene_detail_heatstroke");
 		});
 
@@ -240,63 +240,23 @@
 <body>
   <!-- First navigation component: Navigator. This will remain always on top of the app. -->
   <ons-navigator id="myNavigator" var="myNavigator" page="exp_index.html" >
-
-  <!--ons-navigator id="myNavigator" var="myNavigator" page="tv_control.html" -->
-
-
   </ons-navigator>
  <!-- 
-	 機器の操作インデクス 
- -->
+
+  -->
   <ons-template id="exp_index.html">
-
-      <div class="center" id="toolbar-title">  <h1>シナリオ機能</h1></div>
-
-    <div class="center" >
-     <h2>体感したいシナリオをタップしてください。</h2>
-    </div>
-    
-    
-
-
-<section style="padding-left: 10%">
-
-
-	<ons-button modifier="quiet" id="scene_detail_heatstroke">
-	<img border="0" src="./images/index_scene_heatstroke.png"   width=80% alt="熱中症予防">
-	</ons-button>
-
-
-	<ons-button modifier="quiet" id="scene_detail_crime">
-	<img border="0" src="./images/index_scene_crime.png"  width=80% alt="防犯">
-	</ons-button>
-
-	<ons-button modifier="quiet" id="scene_detail_wakeup">
-	<img border="0" src="./images/index_scene_wakeup.png"  width=80% alt="起床">
-	</ons-button>
-
-
-	<ons-button modifier="quiet" id="scene_detail_outing">
-	<img border="0" src="./images/index_scene_outing.png"  width=80% alt="外出">
-	</ons-button>
-	    
-
-	<ons-button modifier="quiet" id="scene_detail_return">
-	<img border="0" src="./images/index_scene_return.png"  width=80% alt="帰宅">
-	</ons-button>
-
-
-</section>
-
-<ons-button modifier="quiet" >
-    <a href="./index.html" >
-  <img border="0" src="./images/m_button_topback.png" class="btn_tap_anim"  width=80% alt="トップに戻る">
-    </a>
-    
-</ons-button>
-
-
-	    
+    <div style="position: relative;margin: 0px; padding: 0px;width:1920px;height:1080px;">
+         <img border="0" src="./images/experience_top.png"  style="top:0;left:0;width:1920px;">
+	
+        <img border="0" src="./images/index_scene_heatstroke.png"  class="btn_tap_anim" id="scene_detail_heatstroke"   style="position: absolute;left:369px;top:267px;width:1183px;" alt="熱中症予防">
+		<img border="0" src="./images/index_scene_crime.png"       class="btn_tap_anim" id="scene_detail_crime"         style="position: absolute;left:369px;top:415px;width:1183px;" alt="防犯">
+		<img border="0" src="./images/index_scene_wakeup.png"      class="btn_tap_anim" id="scene_detail_wakeup"        style="position: absolute;left:369px;top:559px;width:1183px;" alt="起床">
+		<img border="0" src="./images/index_scene_outing.png"      class="btn_tap_anim" id="scene_detail_outing"         style="position: absolute;left:369px;top:695px;width:1183px;" alt="外出">
+		<img border="0" src="./images/index_scene_return.png"      class="btn_tap_anim" id="scene_detail_return"         style="position: absolute;left:369px;top:839px;width:1183px;" alt="帰宅">
+		<a href="./index.html" >
+		<img border="0" src="./images/m_button_topback.png" class="btn_tap_anim"    style="position: absolute;left:41px;top:892px;width:228px" alt="トップに戻る">
+		</a>
+	</div>
 </ons-template>
 
 
@@ -464,11 +424,12 @@
         <section style="padding-left: 0px; text-align: center;">
             <div class="scene_view" >
                 <video src="./movie/returnhome_161227b.mp4" id="returnhomea" autoplay class="movie_field" width="85%"  > </video>
-                <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
+           <!-- 　
+            <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
                 <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
                 <img src="./images/scenario-shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
-			</div>
-
+            -->
+            </div>
 			<div class="exp_desc">
 			<p>				帰宅する前に外からの遠隔操作で、
 				エアコンと照明をオンにし、給湯を行います。

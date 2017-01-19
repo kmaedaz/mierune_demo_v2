@@ -12,13 +12,11 @@
         "cordova-custom-config@2.0.3",
         "cordova-plugin-media@2.3.0"
     ],
-    "title-ja": "ﾐﾙﾃﾞﾓ",
+    "title-ja": "test",
     "title-en": "",
     "description-ja": "",
     "description-en": "",
     "category": "User Template",
-    "platform": [
-        "android"
-    ],
-    "name": "generated-1484642066-585b8acc013eb04c4c01b334"
+    "platform": [],
+    "name": "generated-1484709899-585b8acc013eb04c4c01b334"
 }

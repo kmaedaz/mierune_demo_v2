@@ -38,20 +38,20 @@ function scenario_play(scenario_arr){
 			$(val).hide();			
             setTimeout(    function (){
                 scenario_play(next_arr);
-            } , n);
+            } , n*300);
         } else if(key=="SHOW") {
             console.log("SHOW"+val);
 			$(val).show();
             setTimeout(    function (){
                 scenario_play(next_arr);
-            } , n);
+            } , n*300);
 
         } else if(key=="IR_COMMAND"){
             console.log("COMMAND"+val);
             sendIRkit_command(val);
             setTimeout(    function (){
                  scenario_play(next_arr);
-            } , n);
+            } , n*300);
         } else if( key=="VIDEO"){
 
 /*  OUNSEN UI VIDEO　オブジェクトがうまく取得できないので暫定廃止
@@ -94,6 +94,10 @@ function scenario_exec(val){
     var param;
     var param1;
     console.log(tmp);
+    if(!tmp)
+    {
+     return ;    
+    }
     try {
         param=  JSON.parse(tmp);
         } catch (e) {

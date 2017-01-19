@@ -169,7 +169,7 @@ function sendIRkit_init_command() {
     sendIRkit_command("AUDIO_ACONOFF");
     setTimeout(    function (){
          sendIRkit_command("TV_ACONOFF");
-    } , 300); 
+    } , 100); 
 
 }
 
