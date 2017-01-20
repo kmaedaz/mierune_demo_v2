@@ -8,12 +8,9 @@
     <!script src="components/loader.js"><!/script>
     <script src="lib/onsenui/js/onsenui.min.js"></script>
     
-    
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
-
-
     <script src="./js/underscore-min.js"></script>
     <script src="./js/jquery-1.11.3.min.js"></script>
     <script src="./js/backbone-min.js"></script>
@@ -23,8 +20,6 @@
     <script src="js/irkit.js"></script>
 
     <script src="js/scenario.js"></script>
-
-
 
 <style>
 
@@ -166,8 +161,8 @@
 		$(document).on('click','#scene_detail_heatstroke',function(e) {
 			setTimeout(	function (){
 					scenario_post_str ="SCENARIO_POST_HEATPROTECT";
-                    myNavigator.resetToPage("scene_detail_heatstroke.html");  //熱中症予防
                     scenario_exec("SCENARIO_HEATPROTECT");
+                    myNavigator.resetToPage("scene_detail_heatstroke.html");  //熱中症予防
                     } , OP_TIME);
 			console.log("scene_detail_heatstroke");
 		});
@@ -176,8 +171,8 @@
 		$(document).on('click','#scene_detail_crime',function(e) {
 			setTimeout(	function (){
 				scenario_post_str ="SCENARIO_POST_CRIMEDEFEND";
-				myNavigator.resetToPage("scene_detail_crime.html");  //防犯
-                 scenario_exec("SCENARIO_CRIMEDEFEND");
+                scenario_exec("SCENARIO_CRIMEDEFEND");
+                myNavigator.resetToPage("scene_detail_crime.html");  //防犯
 			} , OP_TIME);
 			console.log("scene_detail_heatstroke");
 		});
@@ -186,8 +181,8 @@
 		$(document).on('click','#scene_detail_wakeup',function(e) {
 			setTimeout(	function (){
 				scenario_post_str ="SCENARIO_POST_WAKEUP";
-				myNavigator.resetToPage("scene_detail_wakup.html");  //起床
-                 scenario_exec("SCENARIO_WAKEUP");
+             　　scenario_exec("SCENARIO_WAKEUP");
+                myNavigator.resetToPage("scene_detail_wakup.html");  //起床
 	
 			} , OP_TIME);
 			console.log("scene_detail_wakup");
@@ -197,8 +192,8 @@
 		$(document).on('click','#scene_detail_outing',function(e) {
 				scenario_post_str ="SCENARIO_POST_OUTING";
 				setTimeout(	function (){
-				myNavigator.resetToPage("scene_detail_outing.html");  //外出
-                 scenario_exec("SCENARIO_OUTING");
+                scenario_exec("SCENARIO_OUTING");
+                myNavigator.resetToPage("scene_detail_outing.html");  //外出
 
 			} , OP_TIME);
 			console.log("scene_detail_outing");
@@ -245,18 +240,19 @@
 
   -->
   <ons-template id="exp_index.html">
-    <div style="position: relative;margin: 0px; padding: 0px;width:1920px;height:1080px;">
-         <img border="0" src="./images/experience_top.png"  style="top:0;left:0;width:1920px;">
-	
-        <img border="0" src="./images/index_scene_heatstroke.png"  class="btn_tap_anim" id="scene_detail_heatstroke"   style="position: absolute;left:369px;top:267px;width:1183px;" alt="熱中症予防">
-		<img border="0" src="./images/index_scene_crime.png"       class="btn_tap_anim" id="scene_detail_crime"         style="position: absolute;left:369px;top:415px;width:1183px;" alt="防犯">
-		<img border="0" src="./images/index_scene_wakeup.png"      class="btn_tap_anim" id="scene_detail_wakeup"        style="position: absolute;left:369px;top:559px;width:1183px;" alt="起床">
-		<img border="0" src="./images/index_scene_outing.png"      class="btn_tap_anim" id="scene_detail_outing"         style="position: absolute;left:369px;top:695px;width:1183px;" alt="外出">
-		<img border="0" src="./images/index_scene_return.png"      class="btn_tap_anim" id="scene_detail_return"         style="position: absolute;left:369px;top:839px;width:1183px;" alt="帰宅">
-		<a href="./index.html" >
-		<img border="0" src="./images/m_button_topback.png" class="btn_tap_anim"    style="position: absolute;left:41px;top:892px;width:228px" alt="トップに戻る">
-		</a>
+
+    <div style="position: relative;margin: 0px; padding: 0px;width:100%;height: auto;">
+            <img border="0" src="./images/03-back.png"  style="top:0;left:0;width:1281px;">
+            <img border="0" src="./images/03-parts1x368y329.png"     class="btn_tap_anim" id="scene_detail_heatstroke"   style="position: absolute;left:254px;top:217px;width:781px;" alt="熱中症予防">
+        	<img border="0" src="./images/03-parts2x368y472.png"     class="btn_tap_anim" id="scene_detail_crime"         style="position: absolute;left:254px;top:312px;width:781px;" alt="防犯">
+    		<img border="0" src="./images/03-parts3x368y615.png"     class="btn_tap_anim" id="scene_detail_wakeup"        style="position: absolute;left:254px;top:406px;width:781px;" alt="起床">
+    		<img border="0" src="./images/03-parts4x368y758.png"      class="btn_tap_anim" id="scene_detail_outing"         style="position: absolute;left:254px;top:500px;width:781px;" alt="外出">
+    		<img border="0" src="./images/03-parts5x368y900.png"      class="btn_tap_anim" id="scene_detail_return"         style="position: absolute;left:254px;top:594px;width:781px;" alt="帰宅">
+    		<a href="./index.html" >
+    		<img border="0" src="./images/03-parts6x43y999.png" class="btn_tap_anim"    style="position: absolute;left:27px;top:659px;width:144px" alt="トップに戻る">
+    		</a>
 	</div>
+    
 </ons-template>
 
 
@@ -281,7 +277,7 @@
     			カーテンが閉まります。
     			</p>
     			<div class="scene_top_button">
-    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index""   alt="機器の操作に戻る">
+    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index"  alt="機器の操作に戻る">
     			</div>
 
 			</div>
@@ -310,7 +306,7 @@
 				照明が点灯します。
 			</p>
         		<div class="scene_top_button">
-    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index""   alt="機器の操作に戻る">
+    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index"   alt="機器の操作に戻る">
     			</div>
 			</div>>
 
@@ -341,7 +337,7 @@
 
 			</p>
             	<div class="scene_top_button">
-    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index""   alt="機器の操作に戻る">
+    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index"   alt="機器の操作に戻る">
     			</div>
 
 			</div>
@@ -372,7 +368,7 @@
 
 			</p>
             	<div class="scene_top_button">
-    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index""   alt="機器の操作に戻る">
+    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index"   alt="機器の操作に戻る">
     			</div>
 
 			</div>
@@ -404,7 +400,7 @@
 
 			</p>
             	<div class="scene_top_button">
-    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index""   alt="機器の操作に戻る">
+    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index"   alt="機器の操作に戻る">
     			</div>
 
 			</div>
@@ -436,7 +432,7 @@
 
 			</p>
             	<div class="scene_top_button">
-    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index""   alt="機器の操作に戻る">
+    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index"   alt="機器の操作に戻る">
     			</div>
 
 			</div>
