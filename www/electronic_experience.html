@@ -261,30 +261,22 @@
 　熱中症予防
 	 映像終了後（映像は静止状態）に温度計がアップ、その3秒後にエアコンがON、３秒後にカーテンが閉まる。
 	３０秒間操作がない場合、初期設定され、シナリオTOPに戻る。
-	 -->
+   -->
   <ons-template id="scene_detail_heatstroke.html">
-			  <div class="center" id="toolbar-title">  <h1>熱中症予防シナリオ</h1></div>
-    <section style="padding-left: 0px; text-align: center;">
-                <div class="scene_view" >
-                    <video src="./movie/heatstroke_161227.mp4" autoplay  preload="none" class="movie_field" width="85%"> </video>
-                    <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
-                    <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
-                	<img src="./images/scenario-cur.png" class="scene_frame blink_anime small_view scenario-cur" >
-                </div>
+       <ons-page>
+        <div style="position: relative;margin: 0px; padding: 0px;width:100%;height: auto;">
 
-			<div class="exp_desc">
-    			<p>室内温度が２８℃を超えるとエアコンが動き出し、
-    			カーテンが閉まります。
-    			</p>
-    			<div class="scene_top_button">
-    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index"  alt="機器の操作に戻る">
+                    <video src="./movie/heatstroke_161227.mp4" autoplay  preload="none" class="movie_field" > </video>
+                    <img src="./images/sn_house.png" class="photo scene_frame small_view "  >
+                    <img src="./images/sn_aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
+                    <img src="./images/sn_curtain.png" class="scene_frame blink_anime small_view scenario-cur" >
+                    <img border="0" src="./images/18-nechu-backmovie.png"  style="position: absolute;top:0;left:0;width:1280px" >
+            	<div class="scene_top_button">
+    				<img border="0" src="./images/18-nechu-parts1x1650y995.png" class="btn_tap_anim exp_index" style="position: fixed;left: 1110px;top:660px;width:145px"  alt="機器の操作に戻る">
     			</div>
-
-			</div>
-	</section>
+        </div>
+    </ons-page>
   </ons-template>
-
-
 
  <!-- 
 　　　防犯シナリオ
@@ -292,25 +284,18 @@
 	
 	 -->
   <ons-template id="scene_detail_crime.html">
-			  <div class="center" id="toolbar-title">  <h1>防犯シナリオ</h1></div>
-    <section style="padding-left: 0px; text-align: center;">
-            <div class="scene_view" >
-                <video src="./movie/crime_161227.mp4" autoplay preload="none" class="movie_field" width="85%"> </video>
-                <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
-            	<img src="./images/scenario-cur.png" class="scene_frame blink_anime small_view scenario-cur" >
-                <img src="./images/scenario-shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
-			</div>
-
-			<div class="exp_desc">
-			<p>夕方になり室内が暗くなったら、カーテンが閉まり、
-				照明が点灯します。
-			</p>
-        		<div class="scene_top_button">
-    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index"   alt="機器の操作に戻る">
+       <ons-page>
+        <div style="position: relative;margin: 0px; padding: 0px;width:100%;height: auto;">
+                    <video src="./movie/crime_161227.mp4" autoplay  preload="none" class="movie_field" > </video>
+                    <img src="./images/sn_house.png" class="photo scene_frame small_view "  >
+                    <img src="./images/sn_shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
+                    <img src="./images/sn_curtain.png" class="scene_frame blink_anime small_view scenario-cur" >
+                    <img border="0" src="./images/20-bohan-backmovie.png"  style="position: absolute;top:0;left:0;width:1280px" >
+            	<div class="scene_top_button">
+    				<img border="0" src="./images/18-nechu-parts1x1650y995.png" class="btn_tap_anim exp_index" style="position: fixed;left: 1110px;top:660px;width:145px"  alt="機器の操作に戻る">
     			</div>
-			</div>>
-
-	</section>
+        </div>
+    </ons-page>
   </ons-template>
 
 
@@ -321,63 +306,44 @@
 	カーテンが開きます。
 	映像終了後（映像は静止状態）に演出照明がOFF、５秒後にカーテンが閉まり、
 	 -->
+  <!-- 起床シナリオ-->     	 
   <ons-template id="scene_detail_wakup.html">
-			  <div class="center" id="toolbar-title">  <h1>起床シナリオ</h1></div>
-    <section style="padding-left: 0px; text-align: center;">
-            <div class="scene_view" >
-                <video src="./movie/wakeup_161227.mp4" autoplay class="movie_field" width="85%"> </video>
-                <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
-            	<img src="./images/scenario-cd.png" class="scene_frame blink_anime small_view scenario-cd" >
-            	<img src="./images/scenario-cur.png" class="scene_frame blink_anime small_view scenario-cur" >
-			</div>
-
-			<div class="exp_desc">
-			<p>	朝起きると、オーディオがオンになり、
-				カーテンが開きます。
-
-			</p>
-            	<div class="scene_top_button">
-    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index"   alt="機器の操作に戻る">
+	   <ons-page>
+        <div style="position: relative;margin: 0px; padding: 0px;width:100%;height: auto;">
+					<video src="./movie/wakeup_161227.mp4" autoplay  preload="none" class="movie_field" > </video>
+					<img src="./images/scene_home.png" class="photo scene_frame small_view "  >
+					<img src="./images/sn_audio.png" class="scene_frame blink_anime small_view scenario-cd" >
+					<img src="./images/sn_curtain.png" class="scene_frame blink_anime small_view scenario-cur" >
+            	    <img border="0" src="./images/19-backmovie.png"  style="position: absolute;top:0;left:0;width:1280px">
+               <div class="scene_top_button">
+    				<img border="0" src="./images/18-nechu-parts1x1650y995.png" class="btn_tap_anim exp_index" style="position: fixed;left: 1110px;top:660px;width:145px"  alt="機器の操作に戻る">
     			</div>
-
-			</div>
-
-	</section>
+        </div>
+    </ons-page>
   </ons-template>
 
 
-   <!-- 
-	外出
+  <!-- 
+    外出
 	朝起きると、オーディオがオンになり、
 	カーテンが開きます。
 	映像終了後（映像は静止状態）に演出照明がOFF、５秒後にカーテンが閉まり、
 	 -->
+
   <ons-template id="scene_detail_outing.html">
-			  <div class="center" id="toolbar-title">  <h1>外出シナリオ</h1></div>
-        <section style="padding-left: 0px; text-align: center;">
-            <div class="scene_view" >
-                <video src="./movie/goout_161227.mp4" autoplay class="movie_field" width="85%"> </video>
-                <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
-                <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
-                <img src="./images/scenario-shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
-			</div>
-
-			<div class="exp_desc">
-			<p>	外出の時、玄関を出て家を離れると、
-				照明とエアコンのスイッチがオフになります。
-
-			</p>
-            	<div class="scene_top_button">
-    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index"   alt="機器の操作に戻る">
-    			</div>
-
-			</div>
-	</section>
+	   <ons-page>
+        <div style="position: relative;margin: 0px; padding: 0px;width:100%;height: auto;">
+			<video src="./movie/goout_161227.mp4" autoplay  preload="none" class="movie_field" > </video>
+			<img src="./images/scene_home.png" class="photo scene_frame small_view "  >
+    		<img src="./images/sn_aircom.png"  class="scene_frame blink_anime small_view scenario-aircom" >
+			<img src="./images/sn_shomei.png"  class="scene_frame blink_anime small_view scenario-shomei" >
+    	    <img border="0" src="./images/21-backmovie.png"  style="position: absolute;top:0;left:0;width:1280px">
+            <div class="scene_top_button">
+            	<img border="0" src="./images/18-nechu-parts1x1650y995.png" class="btn_tap_anim exp_index" style="position: fixed;left: 1110px;top:660px;width:145px"  alt="機器の操作に戻る">
+            </div>
+        </div>
+    </ons-page>
   </ons-template>
-
-
-
-
    <!-- 
 	帰宅
 	朝起きると、オーディオがオンになり、
@@ -385,27 +351,18 @@
 	映像終了後（映像は静止状態）に演出照明がOFF、５秒後にカーテンが閉まり、
 	 -->
   <ons-template id="scene_detail_return_a.html">
-			  <div class="center" id="toolbar-title">  <h1>帰宅シナリオ</h1></div>
-        <section style="padding-left: 0px; text-align: center;">
-            <div class="scene_view" >
-                <video src="./movie/returnhome_161227a.mp4" id="returnhomea" autoplay class="movie_field" width="85%" > </video>
-                <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
-                <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
-                <img src="./images/scenario-shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
-			</div>
-
-			<div class="exp_desc">
-			<p>				帰宅する前に外からの遠隔操作で、
-				エアコンと照明をオンにし、給湯を行います。
-
-			</p>
-            	<div class="scene_top_button">
-    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index"   alt="機器の操作に戻る">
+       <ons-page>
+        <div style="position: relative;margin: 0px; padding: 0px;width:100%;height: auto;">
+                    <video src="./movie/returnhome_161227a.mp4" autoplay  preload="none" class="movie_field" style="width:1280px;" > </video>
+                    <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
+                    <img src="./images/sn_aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
+                    <img src="./images/sn_shomei.png"  class="scene_frame blink_anime small_view scenario-shomei" >
+                    <img border="0" src="./images/22-backmovie.png"  style="position: absolute;top:0;left:0;width:1280px">
+               <div class="scene_top_button">
+    				<img border="0" src="./images/18-nechu-parts1x1650y995.png" class="btn_tap_anim exp_index" style="position: fixed;left: 1110px;top:660px;width:145px"  alt="機器の操作に戻る">
     			</div>
-
-			</div>
-
-	</section>
+        </div>
+    </ons-page>
   </ons-template>
 
     
@@ -416,28 +373,15 @@
 	映像終了後（映像は静止状態）に演出照明がOFF、５秒後にカーテンが閉まり、
 	 -->
   <ons-template id="scene_detail_return_b.html">
-			  <div class="center" id="toolbar-title">  <h1>帰宅シナリオ</h1></div>
-        <section style="padding-left: 0px; text-align: center;">
-            <div class="scene_view" >
-                <video src="./movie/returnhome_161227b.mp4" id="returnhomea" autoplay class="movie_field" width="85%"  > </video>
-           <!-- 　
-            <img src="./images/scene_home.png" class="photo scene_frame small_view "  >
-                <img src="./images/scenario-aircom.png" class="scene_frame blink_anime small_view scenario-aircom" >
-                <img src="./images/scenario-shomei.png" class="scene_frame blink_anime small_view scenario-shomei" >
-            -->
-            </div>
-			<div class="exp_desc">
-			<p>				帰宅する前に外からの遠隔操作で、
-				エアコンと照明をオンにし、給湯を行います。
-
-			</p>
-            	<div class="scene_top_button">
-    				<img border="0" src="./images/m_button_sceneback.png" class="btn_tap_anim exp_index"   alt="機器の操作に戻る">
+       <ons-page>
+        <div style="position: relative;margin: 0px; padding: 0px;width:100%;height: auto;">
+							<video src="./movie/returnhome_161227b.mp4" autoplay  preload="none" class="movie_field" style="width:1280px;"> </video>
+		            	    <img border="0" src="./images/22-backmovie.png"  style="position: absolute;top:0;left:0;width:1280px">
+               <div class="scene_top_button">
+    				<img border="0" src="./images/18-nechu-parts1x1650y995.png" class="btn_tap_anim exp_index" style="position: fixed;left: 1110px;top:660px;width:145px"  alt="機器の操作に戻る">
     			</div>
-
-			</div>
-
-	</section>
+        </div>
+    </ons-page>
   </ons-template>
    
     
