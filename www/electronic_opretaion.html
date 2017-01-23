@@ -95,12 +95,6 @@
         top: 246px;
         Left: -24px;
         }
-    
-    
-    
-    
-    
-    
     </style>
 
   <script>
@@ -157,10 +151,10 @@
 
         var rep_hits_flag =  false; //操作されたかチェック
 
-    	function  hits_flag() {
+    	function  hits_flag(v) {
 			rep_hits_flag= true;
             use_vibrate();
-		    setTimeout( function (){
+            setTimeout( function (){
 				console.log("kye enabled");
 				rep_hits_flag =false ;
 		    } , 1500); 			
@@ -183,7 +177,7 @@
 					console.log("連打禁止");
 					return ;
 				}
-				hits_flag();
+				hits_flag(e);
                 setTimeout(	function (){
                     myNavigator.resetToPage("light_explanation.html",{ animation: "lift" });
 					setTimeout(	function (){
@@ -200,7 +194,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-    		 hits_flag();
+			hits_flag(e);
             setTimeout(	function (){
 				myNavigator.resetToPage("aircon_explanation.html",{ animation: "lift" });
 					setTimeout(	function (){
@@ -214,7 +208,7 @@
     				console.log("連打禁止");
     				return ;
     			}
-    		 hits_flag();
+			hits_flag(e);
             setTimeout(	function (){
 				myNavigator.resetToPage("tv_explanation.html",{ animation: "lift" });
 					setTimeout(	function (){
@@ -230,7 +224,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-    		 hits_flag();
+			hits_flag(this);
             console.log("audio_op");
 			setTimeout(	function (){
 				myNavigator.resetToPage("audio_explanation.html",{ animation: "lift" });
@@ -248,8 +242,8 @@
 				console.log("連打禁止");
 				return ;
 			}
-		    hits_flag();	
-            console.log("purifier_op");
+			hits_flag(this);
+           console.log("purifier_op");
 			setTimeout(	function (){
 				myNavigator.resetToPage("purifier_explanation.html",{ animation: "lift" });
 					setTimeout(	function (){
@@ -267,7 +261,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-		 hits_flag();
+			hits_flag(this);
             setTimeout(	function (){
 				myNavigator.resetToPage("curtain_explanation.html",{ animation: "lift" });
 					setTimeout(	function (){
@@ -283,7 +277,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-    		 hits_flag();
+			hits_flag(this);
                 setTimeout(	function (){
 				myNavigator.resetToPage("petffood_explanation.html",{ animation: "lift" });
 					setTimeout(	function (){
@@ -309,8 +303,12 @@
 				console.log("連打禁止");
 				return ;
 			}
-		 hits_flag();
-			sendIRkit_command("LIGHT_OFF");
+    		console.log(e);
+
+            hits_flag(e);
+            buttonAnim(e);
+
+            sendIRkit_command("LIGHT_OFF");
 			console.log("light_all_off");
 		});
 
@@ -320,7 +318,7 @@
 			console.log("連打禁止");
 			return ;
 		}
-		 hits_flag();
+		hits_flag(e);
 			sendIRkit_command("LIGHT_ON");
 			console.log("ight_all_on");
 		});
@@ -331,7 +329,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+			hits_flag(this);
 			if(light_bright<5){
 				light_bright++;
 				var t= "LIGHT_BRIGHT" + light_bright ;
@@ -346,7 +344,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+			hits_flag(this);
     		sendIRkit_command("LIGHT_WARMCOLOR"); //test
             console.log("light_reduce");
         });
@@ -357,7 +355,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+			hits_flag(this);
 			sendIRkit_command("LAMP_ON");
 			console.log("light_night");
 		});
@@ -368,7 +366,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+			hits_flag(this);
 			if(light_bright>0){
 				light_bright--;
 				var t= "LIGHT_BRIGHT" + light_bright ;
@@ -389,8 +387,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
-
+			hits_flag(this);
 			//sendIRkit_command("AIRCON_POWER");
             
         	sendIRkit_command("AIRCON_ON");
@@ -404,7 +401,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+			hits_flag(this);
 			sendIRkit_command("AIRCON_ON");
             
 			console.log("aricon_on");
@@ -416,7 +413,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+			hits_flag(this);
 
 			sendIRkit_command("AIRCON_ON");
 			console.log("aricon_off");
@@ -428,7 +425,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+			hits_flag(this);
 			if(temperature_value<30){
 //				sendIRkit_command("AIRCON_UP");
 				temperature_value++;
@@ -445,7 +442,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+			hits_flag(this);
 			if(temperature_value>18){
 //				sendIRkit_command("AIRCON_DOWN");
 				temperature_value--;
@@ -460,8 +457,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
-
+    		hits_flag(this);
 			sendIRkit_command("TV_ON");
             //sendIRkit_dbl_command("TV_ON",2000);
 			console.log("tv_power");
@@ -472,7 +468,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+    		hits_flag(this);
 			sendIRkit_command("TV_CH_UP");
 			console.log("tv_ch_up");
 		});
@@ -482,7 +478,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+    		hits_flag(this);
 			sendIRkit_command("TV_CH_DOWN");
 			console.log("tv_ch_down");
 		});
@@ -492,7 +488,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+    		hits_flag(this);
 			sendIRkit_command("TV_CHIDEGI");
 			console.log("tv_chidegi");
 		});
@@ -502,7 +498,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+    		hits_flag(this);
 			sendIRkit_command("TV_BS");
 			console.log("tv_bs");
 		});
@@ -513,7 +509,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+    		hits_flag(this);
 
 			sendIRkit_command("AUDIO_ON");
 			console.log("audio_power");
@@ -525,7 +521,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+    		hits_flag(this);
 			sendIRkit_command("AUDIO_PLAY");
 			console.log("audio_play");
 		});
@@ -535,7 +531,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+    		hits_flag(this);
 			sendIRkit_command("AUDIO_STOP");
 			console.log("audio_stop");
 		});
@@ -545,7 +541,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+    		hits_flag(this);
 			sendIRkit_command("AUDIO_FFSKIP");
 			console.log("audio_ffskip");
 		});
@@ -556,7 +552,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+    		hits_flag(this);
 			sendIRkit_command("AUDIO_REVSKIP");
 			console.log("audio_revskip");
 		});
@@ -567,7 +563,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+    		hits_flag(this);
 			sendIRkit_command("PURIFER_ON");
 			console.log("purifier_on");
 		});
@@ -577,7 +573,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+    		hits_flag(this);
 			sendIRkit_command("PURIFER_OFF");
 			console.log("purifier_off");
 		});
@@ -590,7 +586,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+    		hits_flag(this);
 			//
 			if(humd_value <80){
 				humd_value +=  10 ;
@@ -605,7 +601,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+    		hits_flag(this);
 			//
 			if(humd_value >50 ){
     			humd_value -= 10 ;
@@ -622,7 +618,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+    		hits_flag(this);
 			sendIRkit_dbl_command("CURTAIN_OPEN",2000);
 			console.log("curtain_open");
 		});
@@ -632,7 +628,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+    		hits_flag(this);
 			sendIRkit_dbl_command("CURTAIN_CLOSE",2000);
 			console.log("curtain_close");
 		});
@@ -643,7 +639,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+    		hits_flag(this);
 			sendIRkit_command("PET_FEEDER_PLAY");
 			console.log("pet_feeder");
 		});
@@ -657,7 +653,7 @@
 				console.log("連打禁止");
 				return ;
 			}
-			 hits_flag();
+    		hits_flag(this);
 			console.log("op_index");
             sendIRkit_init_command();
             myNavigator.resetToPage("op_index.html");

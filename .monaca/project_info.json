@@ -12,13 +12,13 @@
         "cordova-custom-config@2.0.3",
         "cordova-plugin-media@2.3.0"
     ],
-    "title-ja": "TEST",
+    "title-ja": "test",
     "title-en": "",
-    "description-ja": "",
+    "description-ja": "test",
     "description-en": "",
     "category": "User Template",
     "platform": [
-        "android"
+        "winrt"
     ],
-    "name": "generated-1484859611-585b8acc013eb04c4c01b334"
+    "name": "generated-1485144992-585b8acc013eb04c4c01b334"
 }
