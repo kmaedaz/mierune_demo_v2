@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <!-- 機器の操作 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <script src="lib/onsenui/js/onsenui.min.js"></script>
+
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+
+    <script src="./js/jquery-1.11.3.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/irkit.js"></script>
+    <script src="js/scenario.js"></script>
+
+
+    <link rel="stylesheet" href="css/anime_btn.css">
+    <script src="js/btn.js"></script>
+
+    <title>機器の操作カーテン</title>
+    
+
+    <style>
+    </style>
+
+  <script>
+        var opration_flag =  false; //操作されたかチェック
+        const DEFAULT_TEMPERATURE=25;// エアコン初期温度
+        const DEFAULT_HUMD =50 ;
+        function  use_vibrate() {
+            navigator.vibrate(100);
+        }
+
+
+ $(document).ready(function(){
+		console.log("Onsen UI is ready!");
+        setBtnAnim(); 
+  		//
+		const OP_TIME = 200; //操作画面への遷移
+		const NEXTPAGE_TIME = 3400; //操作画面への遷移
+		const NO_OPRATIN_TIME = 30000; //何もしなければ操作画面への遷移
+		
+		/*
+			イベントハンドラー
+		*/
+		//  すべて
+
+		setTimeout(	function (){
+			location.href="kiki_curtain.html";
+		} , NEXTPAGE_TIME);
+
+    });
+  </script>
+
+
+</head>
+
+<body>
+
+
+ <!-- 
+ カーテン
+ 説明 
+ -->
+   <div style="position: relative;margin: 0px; padding: 0px;width:100%;height: auto;">
+        <img border="0" src="./images/14-back.png" alt="カーテン" style="position: absolute;top:0;left:0;;width:1280px">
+        <img border="0" src="./images/opreation-back.png"  style="position: absolute;top:0;left:0;width:1280px">
+        <img border="0" src="./images/operation-cur.png"  class="blink_anime" style="position: absolute;top:0;left:0;width:1280px">
+    </div>
+
+    
+</body>
+</html>

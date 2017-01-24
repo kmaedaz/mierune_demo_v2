@@ -1,0 +1,258 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <!-- 
+    機器の操作
+    インデクス
+    -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <script src="lib/onsenui/js/onsenui.min.js"></script>
+
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <script src="./js/underscore-min.js"></script>
+    <script src="./js/backbone-min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/irkit.js"></script>
+    <script src="js/scenario.js"></script>
+
+
+    <link rel="stylesheet" href="css/anime_btn.css">
+    <script src="js/btn.js"></script>
+
+    <title>機器の操作</title>
+    
+
+    <style>
+    /*  エアコン */
+    #aircon_panel{
+        position: relative;
+    }
+
+    #aircon_base{
+        top: 32px;
+        Left: 60px;
+    }
+    #aircon_up {
+        position: absolute;
+        top: 60px;
+        Left: 710px;
+    }
+    
+    #aircon_down {
+        position: absolute;
+        top: 192px;
+        Left: 710px;
+    }
+    
+    #aircon_temp_txt {
+        position: absolute;
+        font-size: 7.4em;
+        font-weight: bold;
+        top: 460px;
+        Left: 320px;
+    }
+
+    #purifier_hum_txt {
+        position: absolute;
+        font-size: 7.4em;
+        font-weight: bold;
+        top: 460px;
+        Left: 320px;
+    }
+
+
+    /*  テレビ */
+    #tv_power_base{
+        position: relative;
+    }
+
+    #tv_power {
+        position: absolute;
+        top: 88px;
+        Left: -16px;
+        width:98%;
+    }
+    
+    #tv_ch_base {
+        position: relative;
+    }
+    
+    
+    #tv_ch_up {
+        position: absolute;
+        top: 86px;
+        Left: -24px;
+    }
+    
+    #tv_ch_down {
+        position: absolute;
+        top: 246px;
+        Left: -24px;
+        }
+    </style>
+
+  <script>
+        var opration_flag =  false; //操作されたかチェック
+        const DEFAULT_TEMPERATURE=25;// エアコン初期温度
+        const DEFAULT_HUMD =50 ;
+        function  use_vibrate() {
+            navigator.vibrate(100);
+        }
+
+
+    ons.ready(function() {
+		console.log("Onsen UI is ready!");
+        setBtnAnim(); 
+  		//
+		const OP_TIME = 200; //操作画面への遷移
+		const NEXTPAGE_TIME = 3400; //操作画面への遷移
+		const NO_OPRATIN_TIME = 30000; //何もしなければ操作画面への遷移
+
+
+        sendIRkit_init_command();
+        scenario_exec("SCENARIO_ALLT_RESET");
+
+        var rep_hits_flag =  false; //操作されたかチェック
+
+    	function  hits_flag() {
+			rep_hits_flag= true;
+            use_vibrate();
+            setTimeout( function (){
+				console.log("kye enabled");
+				rep_hits_flag =false ;
+		    } , 1500); 			
+		}
+
+		/*
+			イベントハンドラー
+		*/
+		//  すべて
+		$(document).on('click',function(e) {
+		 opration_flag=true;
+		});
+
+
+		/*
+		// begin 機器操作インデックス　画面遷移
+		*/
+		$(document).on('click','#light_op',function(e) {
+                setTimeout(	function (){
+					location.href="pre_shomei.html"; //　照明説明文
+				} , OP_TIME);
+
+																												
+												
+			console.log("light_op");
+		});
+
+		$(document).on('click','#aircon_op',function(e) {
+			console.log("aircon_op");
+            setTimeout(	function (){
+				location.href="pre_aircon.html"; //エアコン説明文
+			} , OP_TIME);
+		});
+		
+		$(document).on('click','#tv_op',function(e) {
+            setTimeout(	function (){
+				location.href="pre_tv.html"; //　TV説明文
+			} , OP_TIME);
+
+			console.log("aircon_op");
+		});
+
+		$(document).on('click','#audio_op',function(e) {
+            console.log("audio_op");
+			setTimeout(	function (){
+				location.href="pre_audio.html"; //　audio説明文
+			} , OP_TIME);
+		});
+
+		//加湿空気清浄機
+		$(document).on('click','#purifier_op',function(e) {
+           console.log("purifier_op");
+			setTimeout(	function (){
+				location.href="pre_kasitu.html"; //　加湿空気清浄機説明文
+			} , OP_TIME);
+
+		});
+
+
+		$(document).on('click','#curtain_op',function(e) {
+		  // カーテン
+			console.log("curtain_op");
+            setTimeout(	function (){
+				location.href="pre_curtain.html"; //　カーテン説明文
+			} , OP_TIME);
+
+		});
+
+		$(document).on('click','#petfeeter_op',function(e) {
+				console.log("petfeeter_op");
+               setTimeout(	function (){
+				location.href="pre_kyuji.html"; //　自動餌説明文
+			} , OP_TIME);
+
+		});
+
+		/*
+		// end 機器操作インデックス
+		*/
+
+
+    });
+
+  </script>
+</head>
+
+<body>
+ <!-- 
+	 機器の操作インデクス 
+ -->
+        <div style="position: relative;margin: 0px; padding: 0px;width:100% ;height: 100%;">
+	        <img border="0" src="./images/operation_top.png"  style="position: absolute;top:0;left:0;width:100%;">
+
+            <a href="javascript:void(0)" id="light_op" >
+            <img border="0" src="./images/02-kiki-parts1_x370y349.png"  class="btn_tap_anim"  style="position:absolute;left:244px;top:230px;width:225px;" alt="照明">
+            </a>
+
+            <a href="javascript:void(0)" id="aircon_op" >
+            <img border="0" src="./images/02-kiki-parts2_x784y349.png" class="btn_tap_anim" style="position:absolute;left:517px;top:230px;width:225px" alt="エアコン">
+            </a>
+
+            <a href="javascript:void(0)" id="tv_op" >
+            <img border="0" src="./images/02-kiki-parts3_x1197y349.png" class="btn_tap_anim"  style="position: absolute;left:790px;top:230px;width:225px" alt="テレビ">
+            </a>
+
+            <a href="javascript:void(0)" id="audio_op" >
+            <img border="0" src="./images/02-kiki-parts4_x163y661.png" class="btn_tap_anim"   style="position: absolute;left:107px;top:436px;width:225px"alt="オーディオ">
+            </a>
+
+            <a href="javascript:void(0)" id="purifier_op" >
+            <img border="0" src="./images/02-kiki-parts5_x577y661.png"  class="btn_tap_anim"  style="position: absolute;left:380px;top:436px;width:225px" alt="空気清浄機">        
+            </a>
+
+            <a href="javascript:void(0)" id="curtain_op" >
+            <img border="0" src="./images/02-kiki-parts6_x990y661.png"  class="btn_tap_anim"  style="position: absolute;left:653px;top:436px;width:225px" alt="カーテン">
+            </a>
+
+            <a href="javascript:void(0)" id="petfeeter_op" >
+            <img border="0" src="./images/02-kiki-parts7_x1404y661.png"  class="btn_tap_anim"  style="position: absolute;left:926px;top:436px;width:225px" alt="自動餌">
+            </a>
+
+            <a href="top_menu.html" >
+            <img border="0" src="./images/02-kiki-parts8_x43y999.png"  class="btn_tap_anim" style="position: absolute;left:43px;top:659px;width:144px;" alt="TOPに戻る">
+            </a>        
+
+
+    
+</body>
+</html>
